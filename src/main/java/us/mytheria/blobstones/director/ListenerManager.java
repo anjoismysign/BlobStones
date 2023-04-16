@@ -172,7 +172,11 @@ public class ListenerManager extends StonesManager implements Listener {
             throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
         if (renameButton.containsSlot(slot)) {
             PSRegion region = inventoryManager.getRegion(player);
-            BlobLibAPI.addChatListener(player, 300, region::setName, "BlobStone.Rename-Timeout",
+            player.closeInventory();
+            BlobLibAPI.addChatListener(player, 300, input -> {
+                        region.setName(input);
+                        inventoryManager.openManageProtection(player);
+                    }, "BlobStone.Rename-Timeout",
                     "BlobStone.Rename");
         }
     }
