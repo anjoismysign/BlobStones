@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
-import us.mytheria.bloblib.BlobLibAPI;
 import us.mytheria.bloblib.BlobLibAssetAPI;
 import us.mytheria.bloblib.entities.BlobEditor;
 import us.mytheria.bloblib.entities.BlobSelector;
@@ -202,16 +201,17 @@ public class InventoryManager extends StonesManager {
                                     .filter(uuid -> !region.getMembers()
                                             .contains(uuid))
                                     .toList());
-                    playerSelector.loadCustomPage(1, true, uuid -> {
+                    playerSelector.setItemsPerPage(playerSelector.getSlots("Members")
+                            == null ? 1 : playerSelector.getSlots("Members").size());
+                    playerSelector.selectElement(player, uuid -> {
+                        region.addMember(uuid);
+                        inventory.buildInventory();
+                    }, null, uuid -> {
                         Player onlinePlayer = Bukkit.getPlayer(uuid);
                         ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
                         builder.displayName(onlinePlayer.getName());
                         return builder.build();
                     });
-                    BlobLibAPI.addSelectorListener(player, uuid -> {
-                        region.addMember(uuid);
-                        inventory.buildInventory();
-                    }, null, playerSelector);
                 }, region.getMembers());
         editor.setItemsPerPage(editor.getSlots("Members") == null
                 ? 1 : editor.getSlots("Members").size());
@@ -256,16 +256,17 @@ public class InventoryManager extends StonesManager {
                                     .filter(uuid -> !region.getOwners()
                                             .contains(uuid))
                                     .toList());
-                    playerSelector.loadCustomPage(1, true, uuid -> {
+                    playerSelector.setItemsPerPage(playerSelector.getSlots("Owners")
+                            == null ? 1 : playerSelector.getSlots("Owners").size());
+                    playerSelector.selectElement(player, uuid -> {
+                        region.addOwner(uuid);
+                        inventory.buildInventory();
+                    }, null, uuid -> {
                         Player onlinePlayer = Bukkit.getPlayer(uuid);
                         ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
                         builder.displayName(onlinePlayer.getName());
                         return builder.build();
                     });
-                    BlobLibAPI.addSelectorListener(player, uuid -> {
-                        region.addOwner(uuid);
-                        inventory.buildInventory();
-                    }, null, playerSelector);
                 }, region.getOwners());
         editor.setItemsPerPage(editor.getSlots("Owners") == null
                 ? 1 : editor.getSlots("Owners").size());
