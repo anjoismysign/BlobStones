@@ -1,0 +1,10 @@
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&lTYPE IN THE'
+    Subtitle: '&7New name for your protection'
+    Actionbar: "&7If this is a mistake, type 'cancel'"
+  Rename-Timeout:
+    Type: ACTIONBAR
+    Title: '&f&lTIMEOUT'
+    Subtitle: '&7You took too long to rename your protection'

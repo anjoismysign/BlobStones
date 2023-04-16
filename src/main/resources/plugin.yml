@@ -1,0 +1,5 @@
+name: BlobStones
+version: ${project.version}
+main: us.mytheria.blobstones.BlobStones
+api-version: 1.17
+load: STARTUP
