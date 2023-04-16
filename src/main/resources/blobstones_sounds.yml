@@ -1,0 +1,6 @@
+BlobStones:
+  Teleport:
+    Sound: ENTITY_SHULKER_TELEPORT
+    Volume: 1.0
+    Pitch: 1.0
+    Audience: PLAYER

@@ -25,6 +25,16 @@ Buttons:
       CustomModelData: 0
       DisplayName: '&6Remove'
     Slot: 26
+  Next-Page:
+    ItemStack:
+      Material: ARROW
+      DisplayName: "&6Next Page"
+    Slot: 23
+  Previous-Page:
+    ItemStack:
+      Material: ARROW
+      DisplayName: "&6Previous Page"
+    Slot: 22
   Owners:
     ItemStack:
       Material: AIR

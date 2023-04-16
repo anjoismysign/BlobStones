@@ -148,13 +148,14 @@ public class InventoryManager extends StonesManager {
                 openManageProtection(player);
             } else {
                 player.teleport(psRegion.getHome());
+                BlobLibAssetAPI.getSound("BlobStones.Teleport").handle(player);
             }
         }, null, psRegion -> {
             ItemStack current = new ItemStack(Material.STONE);
             PSProtectBlock protectBlock = psRegion.getTypeOptions();
             if (protectBlock != null)
                 current = psRegion.getTypeOptions().createItem();
-            String displayName = psRegion.getName();
+            String displayName = ChatColor.WHITE + psRegion.getName();
             if (displayName == null) {
                 Location location = psRegion.getProtectBlock().getLocation();
                 displayName = ChatColor.WHITE.toString() + location.getBlockX() + " / " + location.getBlockY() + " / " + location.getBlockZ();
@@ -298,6 +299,11 @@ public class InventoryManager extends StonesManager {
         if (button == null)
             throw new IllegalStateException("'PvP' button not found");
         currentInventory.put(player.getName(), inventory);
+        updatePVPButton(protectedRegion, inventory, button);
+        inventory.open(player);
+    }
+
+    protected void updatePVPButton(ProtectedRegion protectedRegion, BlobInventory inventory, InventoryButton button) {
         StateFlag.State state = protectedRegion.getFlag(Flags.PVP);
         String stateDisplay;
         if (state == StateFlag.State.ALLOW)
@@ -318,9 +324,7 @@ public class InventoryManager extends StonesManager {
             }
             List<String> finalLore = new ArrayList<>();
             if (lore != null)
-                lore.forEach(s -> {
-                    finalLore.add(s.replace("%state%", stateDisplay));
-                });
+                lore.forEach(s -> finalLore.add(s.replace("%state%", stateDisplay)));
             ItemStackBuilder builder = ItemStackBuilder.build(current);
             builder.displayName(displayName.replace("%state%", stateDisplay));
             builder.lore(finalLore);

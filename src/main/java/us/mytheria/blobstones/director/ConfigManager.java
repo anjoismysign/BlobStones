@@ -11,6 +11,7 @@ public class ConfigManager extends StonesManager {
 
     public ConfigManager(StonesManagerDirector managerDirector) {
         super(managerDirector);
+        reload();
     }
 
     @Override
@@ -35,7 +36,7 @@ public class ConfigManager extends StonesManager {
      * @param <T>   the type of the value
      * @return the value for the given key
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "unused"})
     public <T> T get(String key, Class<T> clazz) {
         return (T) stringMap.get(key);
     }
