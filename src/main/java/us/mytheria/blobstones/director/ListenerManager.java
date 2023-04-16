@@ -133,14 +133,6 @@ public class ListenerManager extends StonesManager implements Listener {
         event.setCancelled(true);
         int slot = event.getRawSlot();
         Player player = (Player) event.getWhoClicked();
-        InventoryButton returnButton = inventoryManager.getInventory(InventoryType.MANAGE_PROTECTION)
-                .getButton("Return");
-        if (returnButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
-        if (returnButton.containsSlot(slot)) {
-            inventoryManager.openManageProtection(player);
-            return;
-        }
         InventoryButton membersButton = inventoryManager.getInventory(InventoryType.MANAGE_PROTECTION)
                 .getButton("Members");
         if (membersButton == null)

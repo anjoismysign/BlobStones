@@ -145,10 +145,8 @@ public class InventoryManager extends StonesManager {
         selector.selectElement(player, psRegion -> {
             regionMap.put(player.getName(), psRegion);
             if (psRegion.isOwner(player.getUniqueId())) {
-                player.sendMessage("owner");
                 openManageProtection(player);
             } else {
-                player.sendMessage("member");
                 player.teleport(psRegion.getHome());
             }
         }, null, psRegion -> {
