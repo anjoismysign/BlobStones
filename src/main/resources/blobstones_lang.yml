@@ -5,6 +5,6 @@ BlobStone:
     Subtitle: '&7New name for your protection'
     Actionbar: "&7If this is a mistake, type 'cancel'"
   Rename-Timeout:
-    Type: ACTIONBAR
+    Type: TITLE
     Title: '&f&lTIMEOUT'
     Subtitle: '&7You took too long to rename your protection'

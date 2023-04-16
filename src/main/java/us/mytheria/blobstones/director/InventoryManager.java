@@ -6,10 +6,7 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import dev.espi.protectionstones.PSPlayer;
 import dev.espi.protectionstones.PSProtectBlock;
 import dev.espi.protectionstones.PSRegion;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -59,9 +56,9 @@ public class InventoryManager extends StonesManager {
         BlobInventory manageFlags = BlobLibAssetAPI.getBlobInventory("ManageFlags");
         carriers.put(InventoryType.MANAGE_FLAGS, manageFlags);
         carrierTitles.put(InventoryType.MANAGE_FLAGS, manageFlags.getTitle());
-        BlobInventory manageAdmins = BlobLibAssetAPI.getBlobInventory("ManageAdmins");
-        carriers.put(InventoryType.MANAGE_OWNERS, manageAdmins);
-        carrierTitles.put(InventoryType.MANAGE_OWNERS, manageAdmins.getTitle());
+        BlobInventory manageOwners = BlobLibAssetAPI.getBlobInventory("ManageOwners");
+        carriers.put(InventoryType.MANAGE_OWNERS, manageOwners);
+        carrierTitles.put(InventoryType.MANAGE_OWNERS, manageOwners.getTitle());
     }
 
     /**
@@ -144,7 +141,18 @@ public class InventoryManager extends StonesManager {
         List<PSRegion> list = owner.getHomes(player.getWorld());
         BlobSelector<PSRegion> selector = BlobSelector.build(inventory, player.getUniqueId(),
                 "PSRegion", list);
-        selector.loadCustomPage(0, true, psRegion -> {
+        selector.setItemsPerPage(selector.getSlots("ProtectionStones")
+                == null ? 1 : selector.getSlots("ProtectionStones").size());
+        selector.selectElement(player, psRegion -> {
+            regionMap.put(player.getName(), psRegion);
+            if (psRegion.isOwner(player.getUniqueId())) {
+                player.sendMessage("owner");
+                openManageProtection(player);
+            } else {
+                player.sendMessage("member");
+                player.teleport(psRegion.getHome());
+            }
+        }, null, psRegion -> {
             ItemStack current = new ItemStack(Material.STONE);
             PSProtectBlock protectBlock = psRegion.getTypeOptions();
             if (protectBlock != null)
@@ -152,20 +160,12 @@ public class InventoryManager extends StonesManager {
             String displayName = psRegion.getName();
             if (displayName == null) {
                 Location location = psRegion.getProtectBlock().getLocation();
-                displayName = location.getBlockX() + " / " + location.getBlockY() + " / " + location.getBlockZ();
+                displayName = ChatColor.WHITE.toString() + location.getBlockX() + " / " + location.getBlockY() + " / " + location.getBlockZ();
             }
             ItemStackBuilder builder = ItemStackBuilder.build(current);
             builder.displayName(displayName);
             return builder.build();
         });
-        BlobLibAPI.addSelectorListener(player, psRegion -> {
-            regionMap.put(player.getName(), psRegion);
-            if (psRegion.isOwner(player.getUniqueId()))
-                openManageProtection(player);
-            else
-                player.teleport(psRegion.getHome());
-        }, null, selector);
-        selector.open();
     }
 
     /**
@@ -202,7 +202,7 @@ public class InventoryManager extends StonesManager {
                                     .filter(uuid -> !region.getMembers()
                                             .contains(uuid))
                                     .toList());
-                    playerSelector.loadCustomPage(0, true, uuid -> {
+                    playerSelector.loadCustomPage(1, true, uuid -> {
                         Player onlinePlayer = Bukkit.getPlayer(uuid);
                         ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
                         builder.displayName(onlinePlayer.getName());
@@ -215,7 +215,7 @@ public class InventoryManager extends StonesManager {
                 }, region.getMembers());
         editor.setItemsPerPage(editor.getSlots("Members") == null
                 ? 1 : editor.getSlots("Members").size());
-        editor.loadCustomPage(0, true, uuid -> {
+        editor.loadCustomPage(1, true, uuid -> {
             String displayName;
             Player member = Bukkit.getPlayer(uuid);
             if (member != null)
@@ -256,7 +256,7 @@ public class InventoryManager extends StonesManager {
                                     .filter(uuid -> !region.getOwners()
                                             .contains(uuid))
                                     .toList());
-                    playerSelector.loadCustomPage(0, true, uuid -> {
+                    playerSelector.loadCustomPage(1, true, uuid -> {
                         Player onlinePlayer = Bukkit.getPlayer(uuid);
                         ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
                         builder.displayName(onlinePlayer.getName());
@@ -269,7 +269,7 @@ public class InventoryManager extends StonesManager {
                 }, region.getOwners());
         editor.setItemsPerPage(editor.getSlots("Owners") == null
                 ? 1 : editor.getSlots("Owners").size());
-        editor.loadCustomPage(0, true, uuid -> {
+        editor.loadCustomPage(1, true, uuid -> {
             String displayName;
             Player member = Bukkit.getPlayer(uuid);
             if (member != null)

@@ -24,9 +24,8 @@ public class StonesManagerDirector extends ManagerDirector {
         getPlugin().getCommand("blobstones").setExecutor(new CommandExecutor() {
             @Override
             public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-                if (!(commandSender instanceof Player))
+                if (!(commandSender instanceof Player player))
                     return false;
-                Player player = (Player) commandSender;
                 getInventoryManager().openWorldNavigator(player);
                 return true;
             }
