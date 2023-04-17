@@ -6,6 +6,7 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import dev.espi.protectionstones.PSPlayer;
 import dev.espi.protectionstones.PSProtectBlock;
 import dev.espi.protectionstones.PSRegion;
+import me.anjoismysign.anjo.entities.Uber;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -182,10 +183,10 @@ public class InventoryManager extends StonesManager {
      */
     @SuppressWarnings("DataFlowIssue")
     public void openManageMembers(Player player) {
-        getPlugin().getAnjoLogger().log("Check if owners can be members simultaneously");
         BlobInventory inventory = getInventory(InventoryType.MANAGE_MEMBERS).copy();
         PSRegion region = getRegion(player);
-        BlobEditor<UUID> editor = BlobEditor.build(inventory, player.getUniqueId(),
+        Uber<BlobEditor<UUID>> uber = Uber.fly();
+        uber.talk(BlobEditor.build(inventory, player.getUniqueId(),
                 "UUID", owner -> {
                     /*
                      * Will manage adding online players to the PSRegion
@@ -204,17 +205,18 @@ public class InventoryManager extends StonesManager {
                             == null ? 1 : playerSelector.getSlots("Members").size());
                     playerSelector.selectElement(player, uuid -> {
                         region.addMember(uuid);
-                        inventory.buildInventory();
+                        openManageMembers(player);
                     }, null, uuid -> {
                         Player onlinePlayer = Bukkit.getPlayer(uuid);
                         ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
                         builder.displayName(onlinePlayer.getName());
                         return builder.build();
                     });
-                }, region.getMembers());
+                }, region.getMembers()));
+        BlobEditor<UUID> editor = uber.thanks();
         editor.setItemsPerPage(editor.getSlots("Members") == null
                 ? 1 : editor.getSlots("Members").size());
-        editor.loadCustomPage(1, true, uuid -> {
+        editor.manage(player, uuid -> {
             String displayName;
             Player member = Bukkit.getPlayer(uuid);
             if (member != null)
@@ -223,11 +225,13 @@ public class InventoryManager extends StonesManager {
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
                 displayName = offlinePlayer.getName();
             }
-            ItemStackBuilder builder = ItemStackBuilder.build(Material.LEATHER_HELMET);
+            ItemStackBuilder builder = ItemStackBuilder.build(Material.WOODEN_HOE);
             builder.displayName(displayName);
             return builder.build();
+        }, uuid -> {
+            region.removeMember(uuid);
+            openManageMembers(player);
         });
-        editor.open();
         editorMap.put(player.getName(), editor);
     }
 
@@ -237,10 +241,10 @@ public class InventoryManager extends StonesManager {
      * @param player the player to open the manage members inventory for
      */
     public void openManageOwners(Player player) {
-        getPlugin().getAnjoLogger().log("Check if owners can be members simultaneously");
         BlobInventory inventory = getInventory(InventoryType.MANAGE_OWNERS).copy();
         PSRegion region = getRegion(player);
-        BlobEditor<UUID> editor = BlobEditor.build(inventory, player.getUniqueId(),
+        Uber<BlobEditor<UUID>> uber = Uber.fly();
+        uber.talk(BlobEditor.build(inventory, player.getUniqueId(),
                 "UUID", owner -> {
                     /*
                      * Will manage adding online players to the PSRegion
@@ -259,17 +263,18 @@ public class InventoryManager extends StonesManager {
                             == null ? 1 : playerSelector.getSlots("Owners").size());
                     playerSelector.selectElement(player, uuid -> {
                         region.addOwner(uuid);
-                        inventory.buildInventory();
+                        openManageOwners(player);
                     }, null, uuid -> {
                         Player onlinePlayer = Bukkit.getPlayer(uuid);
-                        ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
+                        ItemStackBuilder builder = ItemStackBuilder.build(Material.DIAMOND_HOE);
                         builder.displayName(onlinePlayer.getName());
                         return builder.build();
                     });
-                }, region.getOwners());
+                }, region.getOwners()));
+        BlobEditor<UUID> editor = uber.thanks();
         editor.setItemsPerPage(editor.getSlots("Owners") == null
                 ? 1 : editor.getSlots("Owners").size());
-        editor.loadCustomPage(1, true, uuid -> {
+        editor.manage(player, uuid -> {
             String displayName;
             Player member = Bukkit.getPlayer(uuid);
             if (member != null)
@@ -281,8 +286,10 @@ public class InventoryManager extends StonesManager {
             ItemStackBuilder builder = ItemStackBuilder.build(Material.IRON_HELMET);
             builder.displayName(displayName);
             return builder.build();
+        }, uuid -> {
+            region.removeOwner(uuid);
+            openManageOwners(player);
         });
-        editor.open();
         editorMap.put(player.getName(), editor);
     }
 

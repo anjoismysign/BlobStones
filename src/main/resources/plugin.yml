@@ -3,7 +3,7 @@ version: ${project.version}
 main: us.mytheria.blobstones.BlobStones
 api-version: 1.17
 load: STARTUP
-depend: [ BlobLib ]
+depend: [ BlobLib, ProtectionStones ]
 commands:
   blobstones:
     description: "Opens your ProtectionStones GUI helper"

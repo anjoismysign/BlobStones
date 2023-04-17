@@ -77,7 +77,7 @@
         <dependency>
             <groupId>us.mytheria</groupId>
             <artifactId>bloblib</artifactId>
-            <version>1.676s</version>
+            <version>1.681s</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

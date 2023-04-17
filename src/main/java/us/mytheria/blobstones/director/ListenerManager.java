@@ -12,11 +12,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import us.mytheria.bloblib.BlobLibAPI;
 import us.mytheria.bloblib.BlobLibAssetAPI;
-import us.mytheria.bloblib.entities.BlobEditor;
 import us.mytheria.bloblib.entities.inventory.InventoryButton;
 import us.mytheria.blobstones.entities.InventoryType;
-
-import java.util.UUID;
 
 public class ListenerManager extends StonesManager implements Listener {
     private final InventoryManager inventoryManager;
@@ -46,23 +43,10 @@ public class ListenerManager extends StonesManager implements Listener {
                 .getButton("Return");
         if (returnButton == null)
             throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
-        if (returnButton.containsSlot(slot)) {
-            inventoryManager.openManageProtection(player);
-            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+        if (!returnButton.containsSlot(slot))
             return;
-        }
-        InventoryButton inventoryButton = inventoryManager.getInventory(InventoryType.MANAGE_MEMBERS)
-                .getButton("Remove");
-        {
-            if (inventoryButton == null)
-                throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
-            if (!inventoryButton.containsSlot(slot))
-                return;
-            BlobEditor<UUID> editor = inventoryManager
-                    .getUUIDEditor(player);
-            PSRegion region = inventoryManager.getRegion(player);
-            editor.removeElement(player, region::removeMember);
-        }
+        inventoryManager.openManageProtection(player);
+        BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
     }
 
     @EventHandler
@@ -78,23 +62,10 @@ public class ListenerManager extends StonesManager implements Listener {
                 .getButton("Return");
         if (returnButton == null)
             throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
-        if (returnButton.containsSlot(slot)) {
-            inventoryManager.openManageProtection(player);
-            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+        if (!returnButton.containsSlot(slot))
             return;
-        }
-        InventoryButton inventoryButton = inventoryManager.getInventory(InventoryType.MANAGE_OWNERS)
-                .getButton("Remove");
-        {
-            if (inventoryButton == null)
-                throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
-            if (!inventoryButton.containsSlot(slot))
-                return;
-            BlobEditor<UUID> editor = inventoryManager
-                    .getUUIDEditor(player);
-            PSRegion region = inventoryManager.getRegion(player);
-            editor.removeElement(player, region::removeOwner);
-        }
+        inventoryManager.openManageProtection(player);
+        BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
     }
 
     @EventHandler
