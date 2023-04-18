@@ -19,6 +19,18 @@ Buttons:
       CustomModelData: 0
       DisplayName: '&6Is PvP allowed? &8[%state%&8]'
     Slot: 0
+  Mob-Spawning:
+    ItemStack:
+      Material: SPAWNER
+      CustomModelData: 0
+      DisplayName: '&6Are mobs allowed to spawn? &8[%state%&8]'
+    Slot: 1
+  Creeper-Explosion:
+    ItemStack:
+      Material: GUNPOWDER
+      CustomModelData: 0
+      DisplayName: '&6Are creeper explosions allowed? &8[%state%&8]'
+    Slot: 2
 #Built with BlobLib's inventory framework.
 #If you wish to push its limits,
 #feel free contacting anjoismysign (preferably on Discord)
