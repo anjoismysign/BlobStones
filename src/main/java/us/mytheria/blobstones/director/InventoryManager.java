@@ -302,16 +302,32 @@ public class InventoryManager extends StonesManager {
         BlobInventory inventory = getInventory(InventoryType.MANAGE_FLAGS).copy();
         PSRegion region = getRegion(player);
         ProtectedRegion protectedRegion = region.getWGRegion();
-        InventoryButton button = inventory.getButton("PvP");
-        if (button == null)
+        InventoryButton pvpButton = inventory.getButton("PvP");
+        if (pvpButton == null)
             throw new IllegalStateException("'PvP' button not found");
+        InventoryButton mobSpawningButton = inventory.getButton("Mob-Spawning");
+        if (mobSpawningButton == null)
+            throw new IllegalStateException("'Mob-Spawning' button not found");
+        InventoryButton creeperExplosionButton = inventory.getButton("Creeper-Explosion");
+        if (creeperExplosionButton == null)
+            throw new IllegalStateException("'Creeper-Explosion' button not found");
+        InventoryButton witherDamageButton = inventory.getButton("Wither-Damage");
+        if (witherDamageButton == null)
+            throw new IllegalStateException("'Wither-Damage' button not found");
+        InventoryButton ghastFireballButton = inventory.getButton("Ghast-Fireball");
+        if (ghastFireballButton == null)
+            throw new IllegalStateException("'Ghast-Fireball' button not found");
         currentInventory.put(player.getName(), inventory);
-        updatePVPButton(protectedRegion, inventory, button);
+        updateStateFlag(protectedRegion, inventory, pvpButton, Flags.PVP);
+        updateStateFlag(protectedRegion, inventory, mobSpawningButton, Flags.MOB_SPAWNING);
+        updateStateFlag(protectedRegion, inventory, creeperExplosionButton, Flags.CREEPER_EXPLOSION);
+        updateStateFlag(protectedRegion, inventory, witherDamageButton, Flags.WITHER_DAMAGE);
+        updateStateFlag(protectedRegion, inventory, ghastFireballButton, Flags.GHAST_FIREBALL);
         inventory.open(player);
     }
 
-    protected void updatePVPButton(ProtectedRegion protectedRegion, BlobInventory inventory, InventoryButton button) {
-        StateFlag.State state = protectedRegion.getFlag(Flags.PVP);
+    protected void updateStateFlag(ProtectedRegion protectedRegion, BlobInventory inventory, InventoryButton button, StateFlag flag) {
+        StateFlag.State state = protectedRegion.getFlag(flag);
         String stateDisplay;
         if (state == StateFlag.State.ALLOW)
             stateDisplay = TextColor.PARSE(getManagerDirector().getConfigManager().getString("State.Allow"));

@@ -89,17 +89,83 @@ public class ListenerManager extends StonesManager implements Listener {
         InventoryButton pvpButton = inventoryManager.getInventory(InventoryType.MANAGE_FLAGS)
                 .getButton("PvP");
         if (pvpButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
-        if (!pvpButton.containsSlot(slot))
+            throw new IllegalStateException("'PvP' InventoryButton is null. Report to BlobStones developer.");
+        if (pvpButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            PSRegion region = inventoryManager.getRegion(player);
+            ProtectedRegion protectedRegion = region.getWGRegion();
+            StateFlag flag = Flags.PVP;
+            protectedRegion.setFlag(flag, protectedRegion.getFlag(flag) ==
+                    StateFlag.State.ALLOW ? StateFlag.State.DENY : StateFlag.State.ALLOW);
+            inventoryManager.updateStateFlag(protectedRegion,
+                    inventoryManager.getCurrentInventory(player),
+                    pvpButton, flag);
             return;
-        BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
-        PSRegion region = inventoryManager.getRegion(player);
-        ProtectedRegion protectedRegion = region.getWGRegion();
-        protectedRegion.setFlag(Flags.PVP, protectedRegion.getFlag(Flags.PVP) ==
-                StateFlag.State.ALLOW ? StateFlag.State.DENY : StateFlag.State.ALLOW);
-        inventoryManager.updatePVPButton(protectedRegion,
-                inventoryManager.getCurrentInventory(player),
-                pvpButton);
+        }
+        InventoryButton mobSpawningButton = inventoryManager.getInventory(InventoryType.MANAGE_FLAGS)
+                .getButton("Mob-Spawning");
+        if (mobSpawningButton == null)
+            throw new IllegalStateException("'Mob-Spawning' InventoryButton is null. Report to BlobStones developer.");
+        if (mobSpawningButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            PSRegion region = inventoryManager.getRegion(player);
+            ProtectedRegion protectedRegion = region.getWGRegion();
+            StateFlag flag = Flags.MOB_SPAWNING;
+            protectedRegion.setFlag(flag, protectedRegion.getFlag(flag) ==
+                    StateFlag.State.ALLOW ? StateFlag.State.DENY : StateFlag.State.ALLOW);
+            inventoryManager.updateStateFlag(protectedRegion,
+                    inventoryManager.getCurrentInventory(player),
+                    mobSpawningButton, flag);
+            return;
+        }
+        InventoryButton ceeperExplosionButton = inventoryManager.getInventory(InventoryType.MANAGE_FLAGS)
+                .getButton("Creeper-Explosion");
+        if (ceeperExplosionButton == null)
+            throw new IllegalStateException("'Creeper-Explosion' InventoryButton is null. Report to BlobStones developer.");
+        if (ceeperExplosionButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            PSRegion region = inventoryManager.getRegion(player);
+            ProtectedRegion protectedRegion = region.getWGRegion();
+            StateFlag flag = Flags.CREEPER_EXPLOSION;
+            protectedRegion.setFlag(flag, protectedRegion.getFlag(flag) ==
+                    StateFlag.State.ALLOW ? StateFlag.State.DENY : StateFlag.State.ALLOW);
+            inventoryManager.updateStateFlag(protectedRegion,
+                    inventoryManager.getCurrentInventory(player),
+                    ceeperExplosionButton, flag);
+            return;
+        }
+        InventoryButton witherDamageButton = inventoryManager.getInventory(InventoryType.MANAGE_FLAGS)
+                .getButton("Wither-Damage");
+        if (witherDamageButton == null)
+            throw new IllegalStateException("'Wither-Damage' InventoryButton is null. Report to BlobStones developer.");
+        if (witherDamageButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            PSRegion region = inventoryManager.getRegion(player);
+            ProtectedRegion protectedRegion = region.getWGRegion();
+            StateFlag flag = Flags.WITHER_DAMAGE;
+            protectedRegion.setFlag(flag, protectedRegion.getFlag(flag) ==
+                    StateFlag.State.ALLOW ? StateFlag.State.DENY : StateFlag.State.ALLOW);
+            inventoryManager.updateStateFlag(protectedRegion,
+                    inventoryManager.getCurrentInventory(player),
+                    witherDamageButton, flag);
+            return;
+        }
+        InventoryButton ghastFireballButton = inventoryManager.getInventory(InventoryType.MANAGE_FLAGS)
+                .getButton("Ghast-Fireball");
+        if (ghastFireballButton == null)
+            throw new IllegalStateException("'Ghast-Fireball' InventoryButton is null. Report to BlobStones developer.");
+        if (ghastFireballButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            PSRegion region = inventoryManager.getRegion(player);
+            ProtectedRegion protectedRegion = region.getWGRegion();
+            StateFlag flag = Flags.GHAST_FIREBALL;
+            protectedRegion.setFlag(flag, protectedRegion.getFlag(flag) ==
+                    StateFlag.State.ALLOW ? StateFlag.State.DENY : StateFlag.State.ALLOW);
+            inventoryManager.updateStateFlag(protectedRegion,
+                    inventoryManager.getCurrentInventory(player),
+                    ghastFireballButton, flag);
+            return;
+        }
     }
 
     @EventHandler
