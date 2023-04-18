@@ -31,6 +31,18 @@ Buttons:
       CustomModelData: 0
       DisplayName: '&6Are creeper explosions allowed? &8[%state%&8]'
     Slot: 2
+  Wither-Damage:
+    ItemStack:
+      Material: WITHER_SKELETON_SKULL
+      CustomModelData: 0
+      DisplayName: '&6Is wither damage allowed? &8[%state%&8]'
+    Slot: 3
+  Ghast-Fireball:
+    ItemStack:
+      Material: FIRE_CHARGE
+      CustomModelData: 0
+      DisplayName: '&6Are ghast fireballs allowed? &8[%state%&8]'
+    Slot: 4
 #Built with BlobLib's inventory framework.
 #If you wish to push its limits,
 #feel free contacting anjoismysign (preferably on Discord)
