@@ -1,0 +1,60 @@
+Title: 'My Protection'
+Size: 27
+Buttons:
+  Background:
+    ItemStack:
+      Material: GRAY_STAINED_GLASS_PANE
+      CustomModelData: 0
+      DisplayName: " "
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      CustomModelData: 0
+      DisplayName: '&6Owners'
+      Lore:
+        - '&7Click to manage owners'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      CustomModelData: 0
+      DisplayName: '&6Members'
+      Lore:
+        - '&7Click to manage members'
+    Slot: 12
+  Banned-Players:
+    ItemStack:
+      Material: BARRIER
+      CustomModelData: 0
+      DisplayName: '&6Banned Players'
+      Lore:
+        - '&7Click to manage banned players'
+    Slot: 13
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      CustomModelData: 0
+      DisplayName: '&6Flags'
+      Lore:
+        - '&7Click to manage flags'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      CustomModelData: 0
+      DisplayName: '&6Rename'
+      Lore:
+        - '&7Click to rename'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      CustomModelData: 0
+      DisplayName: '&6Teleport'
+      Lore:
+        - '&7Click to teleport'
+    Slot: 22
+#Built with BlobLib's inventory framework.
+#If you wish to push its limits,
+#feel free contacting anjoismysign (preferably on Discord)

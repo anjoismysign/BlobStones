@@ -59,6 +59,12 @@ public class InventoryManager extends StonesManager {
         BlobInventory manageOwners = BlobLibAssetAPI.getBlobInventory("ManageOwners");
         carriers.put(InventoryType.MANAGE_OWNERS, manageOwners);
         carrierTitles.put(InventoryType.MANAGE_OWNERS, manageOwners.getTitle());
+//        BlobInventory manageProtectionTaxPayer = BlobLibAssetAPI.getBlobInventory("ManageProtection.yml");
+//        carriers.put(InventoryType.MANAGE_PROTECTION_TAX_PAYER, manageProtectionTaxPayer);
+//        carrierTitles.put(InventoryType.MANAGE_PROTECTION_TAX_PAYER, manageProtectionTaxPayer.getTitle());
+//        BlobInventory manageBanned = BlobLibAssetAPI.getBlobInventory("ManageBanned");
+//        carriers.put(InventoryType.MANAGE_BANNED, manageBanned);
+//        carrierTitles.put(InventoryType.MANAGE_BANNED, manageBanned.getTitle());
     }
 
     /**
@@ -176,6 +182,16 @@ public class InventoryManager extends StonesManager {
         getInventory(InventoryType.MANAGE_PROTECTION).open(player);
     }
 
+//    /**
+//     * Will open the manage protection inventory assuming the given player is the
+//     * original owner / taxpayer of the PSRegion.
+//     *
+//     * @param player the player to open the manage protection inventory for
+//     */
+//    public void openTaxPayerManageProtection(Player player) {
+//        getInventory(InventoryType.MANAGE_PROTECTION_TAX_PAYER).open(player);
+//    }
+
     /**
      * Will open the manage members inventory for the given player.
      *
@@ -253,11 +269,11 @@ public class InventoryManager extends StonesManager {
                      */
                     Collection<UUID> onlinePlayers = Bukkit.getOnlinePlayers().stream()
                             .map(Player::getUniqueId)
+                            .filter(uuid -> !region.getOwners()
+                                    .contains(uuid))
                             .toList();
                     BlobSelector<UUID> playerSelector = BlobSelector.COLLECTION_INJECTION(player.getUniqueId(),
                             "UUID", onlinePlayers.stream()
-                                    .filter(uuid -> !region.getOwners()
-                                            .contains(uuid))
                                     .toList());
                     playerSelector.setItemsPerPage(playerSelector.getSlots("Owners")
                             == null ? 1 : playerSelector.getSlots("Owners").size());
@@ -275,6 +291,9 @@ public class InventoryManager extends StonesManager {
         editor.setItemsPerPage(editor.getSlots("Owners") == null
                 ? 1 : editor.getSlots("Owners").size());
         editor.manage(player, uuid -> {
+            // TaxAutopayer is the original owner of the region!
+            if (region.getTaxAutopayer().compareTo(uuid) == 0)
+                return null;
             String displayName;
             Player member = Bukkit.getPlayer(uuid);
             if (member != null)
@@ -293,6 +312,59 @@ public class InventoryManager extends StonesManager {
         editorMap.put(player.getName(), editor);
     }
 
+//    public void openManageBanned(Player player) {
+//        BlobInventory inventory = getInventory(InventoryType.MANAGE_BANNED).copy();
+//        PSRegion region = getRegion(player);
+//        Uber<BlobEditor<UUID>> uber = Uber.fly();
+//        uber.talk(BlobEditor.build(inventory, player.getUniqueId(),
+//                "UUID", owner -> {
+//                    /*
+//                     * Will manage adding online players to the PSRegion
+//                     * I'm not used to document inside the code, but this time
+//                     * it was really messy since I am doing this in a hurry lol
+//                     */
+//                    Collection<UUID> onlinePlayers = Bukkit.getOnlinePlayers().stream()
+//                            .map(Player::getUniqueId)
+//                            .toList();
+//                    BlobSelector<UUID> playerSelector = BlobSelector.COLLECTION_INJECTION(player.getUniqueId(),
+//                            "UUID", onlinePlayers.stream()
+//                                    .filter(uuid -> !region.get
+//                                            .contains(uuid))
+//                                    .toList());
+//                    playerSelector.setItemsPerPage(playerSelector.getSlots("Members")
+//                            == null ? 1 : playerSelector.getSlots("Members").size());
+//                    playerSelector.selectElement(player, uuid -> {
+//                        region.addMember(uuid);
+//                        openManageMembers(player);
+//                    }, null, uuid -> {
+//                        Player onlinePlayer = Bukkit.getPlayer(uuid);
+//                        ItemStackBuilder builder = ItemStackBuilder.build(Material.PLAYER_HEAD);
+//                        builder.displayName(onlinePlayer.getName());
+//                        return builder.build();
+//                    });
+//                }, region.getMembers()));
+//        BlobEditor<UUID> editor = uber.thanks();
+//        editor.setItemsPerPage(editor.getSlots("Members") == null
+//                ? 1 : editor.getSlots("Members").size());
+//        editor.manage(player, uuid -> {
+//            String displayName;
+//            Player member = Bukkit.getPlayer(uuid);
+//            if (member != null)
+//                displayName = member.getName();
+//            else {
+//                OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+//                displayName = offlinePlayer.getName();
+//            }
+//            ItemStackBuilder builder = ItemStackBuilder.build(Material.WOODEN_HOE);
+//            builder.displayName(displayName);
+//            return builder.build();
+//        }, uuid -> {
+//            region.removeMember(uuid);
+//            openManageMembers(player);
+//        });
+//        editorMap.put(player.getName(), editor);
+//    }
+
     /**
      * Will open the manage flags inventory for the given player.
      *
@@ -302,28 +374,30 @@ public class InventoryManager extends StonesManager {
         BlobInventory inventory = getInventory(InventoryType.MANAGE_FLAGS).copy();
         PSRegion region = getRegion(player);
         ProtectedRegion protectedRegion = region.getWGRegion();
-        InventoryButton pvpButton = inventory.getButton("PvP");
-        if (pvpButton == null)
-            throw new IllegalStateException("'PvP' button not found");
-        InventoryButton mobSpawningButton = inventory.getButton("Mob-Spawning");
-        if (mobSpawningButton == null)
-            throw new IllegalStateException("'Mob-Spawning' button not found");
-        InventoryButton creeperExplosionButton = inventory.getButton("Creeper-Explosion");
-        if (creeperExplosionButton == null)
-            throw new IllegalStateException("'Creeper-Explosion' button not found");
-        InventoryButton witherDamageButton = inventory.getButton("Wither-Damage");
-        if (witherDamageButton == null)
-            throw new IllegalStateException("'Wither-Damage' button not found");
-        InventoryButton ghastFireballButton = inventory.getButton("Ghast-Fireball");
-        if (ghastFireballButton == null)
-            throw new IllegalStateException("'Ghast-Fireball' button not found");
+        InventoryButton pvpButton = getButton(inventory, "PvP");
+        InventoryButton mobSpawningButton = getButton(inventory, "Mob-Spawning");
+        InventoryButton creeperExplosionButton = getButton(inventory, "Creeper-Explosion");
+        InventoryButton witherDamageButton = getButton(inventory, "Wither-Damage");
+        InventoryButton ghastFireballButton = getButton(inventory, "Ghast-Fireball");
+        InventoryButton passthroughButton = getButton(inventory, "Passthrough");
+        InventoryButton useButton = getButton(inventory, "Use");
         currentInventory.put(player.getName(), inventory);
         updateStateFlag(protectedRegion, inventory, pvpButton, Flags.PVP);
         updateStateFlag(protectedRegion, inventory, mobSpawningButton, Flags.MOB_SPAWNING);
         updateStateFlag(protectedRegion, inventory, creeperExplosionButton, Flags.CREEPER_EXPLOSION);
         updateStateFlag(protectedRegion, inventory, witherDamageButton, Flags.WITHER_DAMAGE);
         updateStateFlag(protectedRegion, inventory, ghastFireballButton, Flags.GHAST_FIREBALL);
+        updateStateFlag(protectedRegion, inventory, passthroughButton, Flags.PASSTHROUGH);
+        updateStateFlag(protectedRegion, inventory, useButton, Flags.USE);
         inventory.open(player);
+    }
+
+    @NotNull
+    private InventoryButton getButton(BlobInventory inventory, String name) {
+        InventoryButton button = inventory.getButton(name);
+        if (button == null)
+            throw new IllegalStateException("'" + name + "' button not found");
+        return button;
     }
 
     protected void updateStateFlag(ProtectedRegion protectedRegion, BlobInventory inventory, InventoryButton button, StateFlag flag) {
@@ -334,7 +408,7 @@ public class InventoryManager extends StonesManager {
         else if (state == StateFlag.State.DENY)
             stateDisplay = TextColor.PARSE(getManagerDirector().getConfigManager().getString("State.Deny"));
         else {
-            stateDisplay = TextColor.PARSE("&5ERROR");
+            stateDisplay = TextColor.PARSE(getManagerDirector().getConfigManager().getString("State.Stock"));
         }
         button.getSlots().forEach(slot -> {
             ItemStack current = inventory.getButton(slot);

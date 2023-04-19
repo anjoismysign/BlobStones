@@ -26,6 +26,7 @@ public class ConfigManager extends StonesManager {
         FileConfiguration configuration = plugin.getConfig();
         stringMap.put("State.Allow", configuration.getString("State.Allow"));
         stringMap.put("State.Deny", configuration.getString("State.Deny"));
+        stringMap.put("State.Stock", configuration.getString("State.Stock"));
     }
 
     /**

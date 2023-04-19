@@ -43,6 +43,18 @@ Buttons:
       CustomModelData: 0
       DisplayName: '&6Are ghast fireballs allowed? &8[%state%&8]'
     Slot: 4
+  Passthrough:
+    ItemStack:
+      Material: IRON_AXE
+      CustomModelData: 0
+      DisplayName: '&6Can players build? &8[%state%&8]'
+    Slot: 5
+  Use:
+    ItemStack:
+      Material: OAK_BUTTON
+      CustomModelData: 0
+      DisplayName: '&6Can players use? &8[%state%&8]'
+    Slot: 6
 #Built with BlobLib's inventory framework.
 #If you wish to push its limits,
 #feel free contacting anjoismysign (preferably on Discord)
