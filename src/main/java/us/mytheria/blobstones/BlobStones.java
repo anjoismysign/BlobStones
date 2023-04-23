@@ -14,6 +14,7 @@ public final class BlobStones extends BlobPlugin {
     @Override
     public void onDisable() {
         this.director.unload();
+        unregisterFromBlobLib();
     }
 
     @Override
