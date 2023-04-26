@@ -23,6 +23,15 @@ Buttons:
       Lore:
         - '&7Click to manage members'
     Slot: 12
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      CustomModelData: 0
+      DisplayName: '&6Show'
+      Lore:
+        - '&7Will either show or hide the block'
+        - '&7Status: &r%show%'
+    Slot: 13
   Flags:
     ItemStack:
       Material: COMMAND_BLOCK

@@ -2,3 +2,6 @@ State:
   Allow: '&aAllow'
   Deny: '&cDeny'
   Stock: '&fDefault'
+Show:
+  Shown: '&aShown'
+  Hidden: '&cHidden'

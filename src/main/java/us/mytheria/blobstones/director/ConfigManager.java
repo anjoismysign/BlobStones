@@ -1,6 +1,7 @@
 package us.mytheria.blobstones.director;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import us.mytheria.bloblib.utilities.TextColor;
 import us.mytheria.blobstones.BlobStones;
 
 import java.util.HashMap;
@@ -27,6 +28,8 @@ public class ConfigManager extends StonesManager {
         stringMap.put("State.Allow", configuration.getString("State.Allow"));
         stringMap.put("State.Deny", configuration.getString("State.Deny"));
         stringMap.put("State.Stock", configuration.getString("State.Stock"));
+        stringMap.put("Show.Shown", configuration.getString("Show.Shown"));
+        stringMap.put("Show.Hidden", configuration.getString("Show.Hidden"));
     }
 
     /**
@@ -50,5 +53,15 @@ public class ConfigManager extends StonesManager {
      */
     public String getString(String key) {
         return get(key, String.class);
+    }
+
+    /**
+     * Will parse the string for the given key.
+     *
+     * @param key the key to get the value for
+     * @return the parsed string for the given key
+     */
+    public String getAndParseString(String key) {
+        return TextColor.PARSE(getString(key));
     }
 }

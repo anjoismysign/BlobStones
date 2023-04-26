@@ -18,12 +18,14 @@ import us.mytheria.bloblib.entities.BlobSelector;
 import us.mytheria.bloblib.entities.inventory.BlobInventory;
 import us.mytheria.bloblib.entities.inventory.InventoryButton;
 import us.mytheria.bloblib.itemstack.ItemStackBuilder;
-import us.mytheria.bloblib.utilities.TextColor;
+import us.mytheria.bloblib.itemstack.ItemStackModder;
 import us.mytheria.blobstones.entities.InventoryType;
 
 import java.util.*;
 
 public class InventoryManager extends StonesManager {
+    private final ConfigManager configManager;
+
     private Map<InventoryType, BlobInventory> carriers;
     private Map<InventoryType, String> carrierTitles;
     private final Map<String, BlobEditor<?>> editorMap;
@@ -32,6 +34,7 @@ public class InventoryManager extends StonesManager {
 
     public InventoryManager(StonesManagerDirector managerDirector) {
         super(managerDirector);
+        this.configManager = managerDirector.getConfigManager();
         editorMap = new HashMap<>();
         currentInventory = new HashMap<>();
         regionMap = new HashMap<>();
@@ -179,7 +182,17 @@ public class InventoryManager extends StonesManager {
      * @param player the player to open the manage protection inventory for
      */
     public void openManageProtection(Player player) {
-        getInventory(InventoryType.MANAGE_PROTECTION).open(player);
+        BlobInventory inventory = getInventory(InventoryType.MANAGE_PROTECTION).copy();
+        PSRegion region = getRegion(player);
+        InventoryButton button = getButton(inventory, "Show");
+        button.getSlots().forEach(slot -> {
+            ItemStack itemStack = inventory.getButton(slot);
+            ItemStackModder modder = ItemStackModder.mod(itemStack.clone());
+            modder.replace("%show%", region.isHidden() ?
+                    configManager.getAndParseString("Show.Hidden") :
+                    configManager.getAndParseString("Show.Shown"));
+        });
+        inventory.open(player);
     }
 
 //    /**
@@ -396,7 +409,7 @@ public class InventoryManager extends StonesManager {
     private InventoryButton getButton(BlobInventory inventory, String name) {
         InventoryButton button = inventory.getButton(name);
         if (button == null)
-            throw new IllegalStateException("'" + name + "' button not found");
+            throw new NullPointerException("'" + name + "' button not found");
         return button;
     }
 
@@ -404,11 +417,11 @@ public class InventoryManager extends StonesManager {
         StateFlag.State state = protectedRegion.getFlag(flag);
         String stateDisplay;
         if (state == StateFlag.State.ALLOW)
-            stateDisplay = TextColor.PARSE(getManagerDirector().getConfigManager().getString("State.Allow"));
+            stateDisplay = configManager.getAndParseString("State.Allow");
         else if (state == StateFlag.State.DENY)
-            stateDisplay = TextColor.PARSE(getManagerDirector().getConfigManager().getString("State.Deny"));
+            stateDisplay = configManager.getAndParseString("State.Deny");
         else {
-            stateDisplay = TextColor.PARSE(getManagerDirector().getConfigManager().getString("State.Stock"));
+            stateDisplay = configManager.getAndParseString("State.Stock");
         }
         button.getSlots().forEach(slot -> {
             ItemStack current = inventory.getButton(slot);
