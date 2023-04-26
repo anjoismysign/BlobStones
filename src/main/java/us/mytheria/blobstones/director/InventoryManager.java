@@ -406,7 +406,7 @@ public class InventoryManager extends StonesManager {
     }
 
     @NotNull
-    private InventoryButton getButton(BlobInventory inventory, String name) {
+    protected static InventoryButton getButton(BlobInventory inventory, String name) {
         InventoryButton button = inventory.getButton(name);
         if (button == null)
             throw new NullPointerException("'" + name + "' button not found");

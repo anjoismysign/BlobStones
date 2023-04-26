@@ -12,6 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import us.mytheria.bloblib.BlobLibAPI;
 import us.mytheria.bloblib.BlobLibAssetAPI;
+import us.mytheria.bloblib.entities.inventory.BlobInventory;
 import us.mytheria.bloblib.entities.inventory.InventoryButton;
 import us.mytheria.blobstones.entities.InventoryType;
 
@@ -159,47 +160,35 @@ public class ListenerManager extends StonesManager implements Listener {
         event.setCancelled(true);
         int slot = event.getRawSlot();
         Player player = (Player) event.getWhoClicked();
-        InventoryButton membersButton = inventoryManager.getInventory(inventoryType)
-                .getButton("Members");
-        if (membersButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
+        BlobInventory inventory = inventoryManager.getInventory(inventoryType);
+        if (inventory == null)
+            throw new NullPointerException("Inventory is null. Report to BlobStones developer.");
+        InventoryButton membersButton = InventoryManager.getButton(inventory, "Members");
         if (membersButton.containsSlot(slot)) {
             inventoryManager.openManageMembers(player);
             BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
             return true;
         }
-        InventoryButton ownersButton = inventoryManager.getInventory(inventoryType)
-                .getButton("Owners");
-        if (ownersButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
+        InventoryButton ownersButton = InventoryManager.getButton(inventory, "Owners");
         if (ownersButton.containsSlot(slot)) {
             inventoryManager.openManageOwners(player);
             BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
             return true;
         }
-        InventoryButton flagsButton = inventoryManager.getInventory(inventoryType)
-                .getButton("Flags");
-        if (flagsButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
+        InventoryButton flagsButton = InventoryManager.getButton(inventory, "Flags");
         if (flagsButton.containsSlot(slot)) {
             inventoryManager.openManageFlags(player);
             BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
             return true;
         }
-        InventoryButton teleportButton = inventoryManager.getInventory(inventoryType)
-                .getButton("Teleport");
-        if (teleportButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
+        InventoryButton teleportButton = InventoryManager.getButton(inventory, "Teleport");
         if (teleportButton.containsSlot(slot)) {
             PSRegion region = inventoryManager.getRegion(player);
             player.teleport(region.getHome());
             BlobLibAssetAPI.getSound("BlobStones.Teleport").handle(player);
             return true;
         }
-        InventoryButton renameButton = inventoryManager.getInventory(inventoryType)
-                .getButton("Rename");
-        if (renameButton == null)
-            throw new IllegalStateException("InventoryButton is null. Report to BlobStones developer.");
+        InventoryButton renameButton = InventoryManager.getButton(inventory, "Rename");
         if (renameButton.containsSlot(slot)) {
             BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
             PSRegion region = inventoryManager.getRegion(player);
@@ -209,6 +198,14 @@ public class ListenerManager extends StonesManager implements Listener {
                         inventoryManager.openManageProtection(player);
                     }, "BlobStone.Rename-Timeout",
                     "BlobStone.Rename");
+            return true;
+        }
+        InventoryButton showButton = InventoryManager.getButton(inventory, "Show");
+        if (showButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            PSRegion region = inventoryManager.getRegion(player);
+            player.closeInventory();
+            region.toggleHide();
             return true;
         }
         return false;
