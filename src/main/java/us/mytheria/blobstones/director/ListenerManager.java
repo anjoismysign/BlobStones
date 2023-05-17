@@ -16,12 +16,18 @@ import us.mytheria.bloblib.entities.inventory.BlobInventory;
 import us.mytheria.bloblib.entities.inventory.InventoryButton;
 import us.mytheria.blobstones.entities.InventoryType;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 public class ListenerManager extends StonesManager implements Listener {
     private final InventoryManager inventoryManager;
+    private List<UUID> viewCooldown;
 
     public ListenerManager(StonesManagerDirector managerDirector) {
         super(managerDirector);
         inventoryManager = managerDirector.getInventoryManager();
+        viewCooldown = new ArrayList<>();
         Bukkit.getPluginManager().registerEvents(this, getPlugin());
     }
 
@@ -206,6 +212,19 @@ public class ListenerManager extends StonesManager implements Listener {
             PSRegion region = inventoryManager.getRegion(player);
             player.closeInventory();
             region.toggleHide();
+            return true;
+        }
+        InventoryButton viewButton = InventoryManager.getButton(inventory, "View");
+        if (viewButton.containsSlot(slot)) {
+            BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
+            player.closeInventory();
+            if (viewCooldown.contains(player.getUniqueId()))
+                return true;
+            PSRegion region = inventoryManager.getRegion(player);
+            viewCooldown.add(player.getUniqueId());
+            Bukkit.getScheduler().runTaskLaterAsynchronously(getPlugin(),
+                    () -> viewCooldown.remove(player.getUniqueId()), 60);
+            RegionUtil.viewRegion(player, region, getPlugin());
             return true;
         }
         return false;

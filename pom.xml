@@ -6,7 +6,7 @@
 
     <groupId>us.mytheria</groupId>
     <artifactId>BlobStones</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>jar</packaging>
 
     <name>BlobStones</name>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>us.mytheria</groupId>
             <artifactId>bloblib</artifactId>
-            <version>1.681s</version>
+            <version>1.686s</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

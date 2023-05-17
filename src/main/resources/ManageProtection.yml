@@ -48,6 +48,14 @@ Buttons:
       Lore:
         - '&7Click to rename'
     Slot: 15
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      CustomModelData: 0
+      DisplayName: '&6View'
+      Lore:
+        - '&7Click to view the region''s boundaries'
+    Slot: 21
   Teleport:
     ItemStack:
       Material: ENDER_PEARL
