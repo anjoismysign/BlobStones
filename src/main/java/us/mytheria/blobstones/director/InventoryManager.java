@@ -20,6 +20,7 @@ import us.mytheria.bloblib.entities.inventory.InventoryButton;
 import us.mytheria.bloblib.itemstack.ItemStackBuilder;
 import us.mytheria.bloblib.itemstack.ItemStackModder;
 import us.mytheria.blobstones.entities.InventoryType;
+import us.mytheria.blobstones.entities.MovementWarmup;
 
 import java.util.*;
 
@@ -157,8 +158,17 @@ public class InventoryManager extends StonesManager {
             if (psRegion.isOwner(player.getUniqueId())) {
                 openManageProtection(player);
             } else {
-                player.teleport(psRegion.getHome());
-                BlobLibAssetAPI.getSound("BlobStones.Teleport").handle(player);
+                boolean enabledTeleport = configManager.getBoolean("Teleport.Enabled");
+                if (!enabledTeleport)
+                    return;
+                boolean enabledWarmup = configManager.getBoolean("Teleport.Warmup.Enabled");
+                if (!enabledWarmup) {
+                    player.teleport(psRegion.getHome());
+                    return;
+                }
+                int time = configManager.getInteger("Teleport.Warmup.Time");
+                MovementWarmup.PLAYER_TELEPORT(time, player, psRegion.getHome(),
+                        BlobLibAssetAPI.getMessage("System.Warmup"));
             }
         }, null, psRegion -> {
             ItemStack current = new ItemStack(Material.STONE);
@@ -184,14 +194,25 @@ public class InventoryManager extends StonesManager {
     public void openManageProtection(Player player) {
         BlobInventory inventory = getInventory(InventoryType.MANAGE_PROTECTION).copy();
         PSRegion region = getRegion(player);
-        InventoryButton button = getButton(inventory, "Show");
-        button.getSlots().forEach(slot -> {
+        InventoryButton showButton = getButton(inventory, "Show");
+        showButton.getSlots().forEach(slot -> {
             ItemStack itemStack = inventory.getButton(slot);
             ItemStackModder modder = ItemStackModder.mod(itemStack.clone());
             modder.replace("%show%", region.isHidden() ?
                     configManager.getAndParseString("Show.Hidden") :
                     configManager.getAndParseString("Show.Shown"));
         });
+        boolean enabledTeleport = configManager.getBoolean("Teleport.Enabled");
+        if (!enabledTeleport) {
+            InventoryButton background = getButton(inventory, "Background");
+            ItemStack backgroundItem = inventory.getButton(background.getSlots().stream().findFirst().orElseThrow(() -> {
+                throw new IllegalStateException("'Background' button not found in 'ManageProtection' inventory!");
+            }));
+            InventoryButton teleportButton = getButton(inventory, "Teleport");
+            teleportButton.getSlots().forEach(slot -> {
+                inventory.setButton(slot, backgroundItem);
+            });
+        }
         inventory.open(player);
     }
 

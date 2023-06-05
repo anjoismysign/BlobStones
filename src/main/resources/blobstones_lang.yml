@@ -8,3 +8,12 @@ BlobStone:
     Type: TITLE
     Title: '&f&lTIMEOUT'
     Subtitle: '&7You took too long to rename your protection'
+System:
+  Warmup-Failed:
+    Type: ACTIONBAR
+    Title: '&c&lFAILED'
+    Subtitle: '&7You moved too soon'
+    BlobSound: System.Alert
+  Warmup:
+    Type: ACTIONBAR
+    Message: '&7Teleporting in &f%time%&7...'

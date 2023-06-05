@@ -1,3 +1,13 @@
+Teleport:
+  Enabled: true
+  Warmup:
+    Enabled: true
+    #In seconds
+    Time: 4
+Listeners:
+  Warmup-PlayerMoveEvent:
+    Enabled: true
+    Fail-Message: System.Warmup-Failed
 State:
   Allow: '&aAllow'
   Deny: '&cDeny'

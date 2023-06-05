@@ -51,6 +51,26 @@ public class ConfigManager extends StonesManager {
      * @param key the key to get the value for
      * @return the value for the given key
      */
+    public Integer getInteger(String key) {
+        return get(key, Integer.class);
+    }
+
+    /**
+     * Will return the value for the given key.
+     *
+     * @param key the key to get the value for
+     * @return the value for the given key
+     */
+    public Boolean getBoolean(String key) {
+        return get(key, Boolean.class);
+    }
+
+    /**
+     * Will return the value for the given key.
+     *
+     * @param key the key to get the value for
+     * @return the value for the given key
+     */
     public String getString(String key) {
         return get(key, String.class);
     }

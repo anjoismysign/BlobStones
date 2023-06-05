@@ -15,6 +15,7 @@ import us.mytheria.bloblib.BlobLibAssetAPI;
 import us.mytheria.bloblib.entities.inventory.BlobInventory;
 import us.mytheria.bloblib.entities.inventory.InventoryButton;
 import us.mytheria.blobstones.entities.InventoryType;
+import us.mytheria.blobstones.entities.MovementWarmup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +23,13 @@ import java.util.UUID;
 
 public class ListenerManager extends StonesManager implements Listener {
     private final InventoryManager inventoryManager;
+    private final ConfigManager configManager;
     private List<UUID> viewCooldown;
 
     public ListenerManager(StonesManagerDirector managerDirector) {
         super(managerDirector);
         inventoryManager = managerDirector.getInventoryManager();
+        configManager = managerDirector.getConfigManager();
         viewCooldown = new ArrayList<>();
         Bukkit.getPluginManager().registerEvents(this, getPlugin());
     }
@@ -143,7 +146,6 @@ public class ListenerManager extends StonesManager implements Listener {
 //        }
 //    }
 
-
     @EventHandler
     public void onWorldNavigator(InventoryClickEvent event) {
         String title = event.getView().getTitle();
@@ -187,12 +189,21 @@ public class ListenerManager extends StonesManager implements Listener {
             BlobLibAssetAPI.getSound("Builder.Button-Click").handle(player);
             return true;
         }
-        InventoryButton teleportButton = InventoryManager.getButton(inventory, "Teleport");
-        if (teleportButton.containsSlot(slot)) {
-            PSRegion region = inventoryManager.getRegion(player);
-            player.teleport(region.getHome());
-            BlobLibAssetAPI.getSound("BlobStones.Teleport").handle(player);
-            return true;
+        boolean enabledTeleport = configManager.getBoolean("Teleport.Enabled");
+        if (enabledTeleport) {
+            InventoryButton teleportButton = InventoryManager.getButton(inventory, "Teleport");
+            if (teleportButton.containsSlot(slot)) {
+                PSRegion region = inventoryManager.getRegion(player);
+                boolean enabledWarmup = configManager.getBoolean("Teleport.Warmup.Enabled");
+                if (!enabledWarmup) {
+                    player.teleport(region.getHome());
+                    return true;
+                }
+                int time = configManager.getInteger("Teleport.Warmup.Time");
+                MovementWarmup.PLAYER_TELEPORT(time, player, region.getHome(),
+                        BlobLibAssetAPI.getMessage("System.Warmup"));
+                return true;
+            }
         }
         InventoryButton renameButton = InventoryManager.getButton(inventory, "Rename");
         if (renameButton.containsSlot(slot)) {
