@@ -23,6 +23,7 @@ import us.mytheria.blobstones.entities.InventoryType;
 import us.mytheria.blobstones.entities.MovementWarmup;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class InventoryManager extends StonesManager {
     private final ConfigManager configManager;
@@ -148,7 +149,11 @@ public class InventoryManager extends StonesManager {
             return;
         BlobInventory inventory = getInventory(InventoryType.WORLD_NAVIGATOR).copy();
         PSPlayer owner = PSPlayer.fromPlayer(player);
+        boolean enabledTeleport = configManager.getBoolean("Teleport.Enabled");
         List<PSRegion> list = owner.getHomes(player.getWorld());
+        if (!enabledTeleport)
+            list = list.stream().filter(psRegion -> psRegion.isOwner(player.getUniqueId()))
+                    .collect(Collectors.toList());
         BlobSelector<PSRegion> selector = BlobSelector.build(inventory, player.getUniqueId(),
                 "PSRegion", list);
         selector.setItemsPerPage(selector.getSlots("ProtectionStones")
@@ -158,7 +163,6 @@ public class InventoryManager extends StonesManager {
             if (psRegion.isOwner(player.getUniqueId())) {
                 openManageProtection(player);
             } else {
-                boolean enabledTeleport = configManager.getBoolean("Teleport.Enabled");
                 if (!enabledTeleport)
                     return;
                 boolean enabledWarmup = configManager.getBoolean("Teleport.Warmup.Enabled");
@@ -175,11 +179,12 @@ public class InventoryManager extends StonesManager {
             PSProtectBlock protectBlock = psRegion.getTypeOptions();
             if (protectBlock != null)
                 current = psRegion.getTypeOptions().createItem();
-            String displayName = ChatColor.WHITE + psRegion.getName();
+            String displayName = psRegion.getName();
             if (displayName == null) {
                 Location location = psRegion.getProtectBlock().getLocation();
                 displayName = ChatColor.WHITE.toString() + location.getBlockX() + " / " + location.getBlockY() + " / " + location.getBlockZ();
-            }
+            } else
+                displayName = ChatColor.WHITE + psRegion.getName();
             ItemStackBuilder builder = ItemStackBuilder.build(current);
             builder.displayName(displayName);
             return builder.build();
