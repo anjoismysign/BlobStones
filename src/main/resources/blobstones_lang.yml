@@ -10,7 +10,7 @@ BlobStone:
     Subtitle: '&7You took too long to rename your protection'
 System:
   Warmup-Failed:
-    Type: ACTIONBAR
+    Type: TITLE
     Title: '&c&lFAILED'
     Subtitle: '&7You moved too soon'
     BlobSound: System.Alert

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigManager extends StonesManager {
-    private Map<String, Object> stringMap;
+    private Map<String, Object> map;
 
     public ConfigManager(StonesManagerDirector managerDirector) {
         super(managerDirector);
@@ -23,13 +23,18 @@ public class ConfigManager extends StonesManager {
         plugin.saveDefaultConfig();
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
-        stringMap = new HashMap<>();
+        map = new HashMap<>();
         FileConfiguration configuration = plugin.getConfig();
-        stringMap.put("State.Allow", configuration.getString("State.Allow"));
-        stringMap.put("State.Deny", configuration.getString("State.Deny"));
-        stringMap.put("State.Stock", configuration.getString("State.Stock"));
-        stringMap.put("Show.Shown", configuration.getString("Show.Shown"));
-        stringMap.put("Show.Hidden", configuration.getString("Show.Hidden"));
+        map.put("State.Allow", configuration.getString("State.Allow"));
+        map.put("State.Deny", configuration.getString("State.Deny"));
+        map.put("State.Stock", configuration.getString("State.Stock"));
+        map.put("Show.Shown", configuration.getString("Show.Shown"));
+        map.put("Show.Hidden", configuration.getString("Show.Hidden"));
+        map.put("Teleport.Enabled", configuration.getBoolean("Teleport.Enabled"));
+        map.put("Teleport.Warmup.Enabled", configuration.getBoolean("Teleport.Warmup.Enabled"));
+        map.put("Teleport.Warmup.Time", configuration.getInt("Teleport.Warmup.Time"));
+        map.put("Listeners.Warmup-PlayerMoveEvent.Enabled", configuration.getBoolean("Listeners.Warmup-PlayerMoveEvent.Enabled"));
+        map.put("Listeners.Warmup-PlayerMoveEvent.Fail-Message", configuration.getString("Listeners.Warmup-PlayerMoveEvent.Fail-Message"));
     }
 
     /**
@@ -42,7 +47,7 @@ public class ConfigManager extends StonesManager {
      */
     @SuppressWarnings({"unchecked", "unused"})
     public <T> T get(String key, Class<T> clazz) {
-        return (T) stringMap.get(key);
+        return (T) map.get(key);
     }
 
     /**
