@@ -5,10 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import us.mytheria.bloblib.managers.ManagerDirector;
+import us.mytheria.bloblib.entities.GenericManagerDirector;
 import us.mytheria.blobstones.BlobStones;
 
-public class StonesManagerDirector extends ManagerDirector {
+public class StonesManagerDirector extends GenericManagerDirector<BlobStones> {
 
     public StonesManagerDirector(BlobStones blobPlugin) {
         super(blobPlugin);
@@ -35,11 +35,6 @@ public class StonesManagerDirector extends ManagerDirector {
     @Override
     public void unload() {
         super.unload();
-    }
-
-    @Override
-    public BlobStones getPlugin() {
-        return (BlobStones) super.getPlugin();
     }
 
     /**
