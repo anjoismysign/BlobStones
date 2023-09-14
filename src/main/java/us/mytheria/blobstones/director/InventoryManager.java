@@ -171,8 +171,7 @@ public class InventoryManager extends StonesManager {
                     return;
                 }
                 int time = configManager.getInteger("Teleport.Warmup.Time");
-                MovementWarmup.PLAYER_TELEPORT(time, player, psRegion.getHome(),
-                        BlobLibAssetAPI.getMessage("System.Warmup"));
+                MovementWarmup.PLAYER_TELEPORT(time, player, psRegion.getHome());
             }
         }, null, psRegion -> {
             ItemStack current = new ItemStack(Material.STONE);

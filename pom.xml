@@ -6,7 +6,7 @@
 
     <groupId>us.mytheria</groupId>
     <artifactId>BlobStones</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.11</version>
     <packaging>jar</packaging>
 
     <name>BlobStones</name>
@@ -85,13 +85,13 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19.4-R0.1-SNAPSHOT</version>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>us.mytheria</groupId>
             <artifactId>bloblib</artifactId>
-            <version>1.690.4p</version>
+            <version>1.691.2s</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

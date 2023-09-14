@@ -202,8 +202,7 @@ public class ListenerManager extends StonesManager implements Listener {
                     return true;
                 }
                 int time = configManager.getInteger("Teleport.Warmup.Time");
-                MovementWarmup.PLAYER_TELEPORT(time, player, region.getHome(),
-                        BlobLibAssetAPI.getMessage("System.Warmup"));
+                MovementWarmup.PLAYER_TELEPORT(time, player, region.getHome());
                 return true;
             }
         }
