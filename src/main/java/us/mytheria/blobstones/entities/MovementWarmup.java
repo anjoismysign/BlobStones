@@ -29,7 +29,7 @@ public class MovementWarmup implements Listener {
     private final String key;
     private BlobMessage warmupFailMessage;
     private static final BlobMessage teleportWarmupMessage =
-            Objects.requireNonNull(BlobLibAssetAPI.getMessage("Teleport-Warmup"));
+            Objects.requireNonNull(BlobLibAssetAPI.getMessage("System.Teleport-Warmup"));
     private final ConfigManager configManager;
 
     public MovementWarmup(ListenerManager listenerManager) {
