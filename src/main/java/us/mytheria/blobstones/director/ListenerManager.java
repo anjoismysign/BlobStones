@@ -24,12 +24,14 @@ import java.util.UUID;
 public class ListenerManager extends StonesManager implements Listener {
     private final InventoryManager inventoryManager;
     private final ConfigManager configManager;
+    private final MovementWarmup warmup;
     private List<UUID> viewCooldown;
 
     public ListenerManager(StonesManagerDirector managerDirector) {
         super(managerDirector);
         inventoryManager = managerDirector.getInventoryManager();
         configManager = managerDirector.getConfigManager();
+        warmup = new MovementWarmup(this);
         viewCooldown = new ArrayList<>();
         Bukkit.getPluginManager().registerEvents(this, getPlugin());
     }
