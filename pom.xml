@@ -69,7 +69,7 @@
     <repositories>
         <repository>
             <id>github</id>                                                                         
-            <url>https://anjoismysign:${GITHUB_TOKEN}@maven.pkg.github.com/anjoismysign/BlobLib</url>                  
+            <url>https://anjoismysign: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@maven.pkg.github.com/anjoismysign/BlobLib</url>                  
             <snapshots>        
                 <enabled>true</enabled>                                             
             </snapshots>                                                          
