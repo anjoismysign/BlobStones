@@ -136,7 +136,7 @@
         <server>
             <id>github</id>
             <username>anjoismysign</username>
-           <password>${{ secret.T }}</password>
+           <password>${env.GITHUB_TOKEN}</password>
         </server>
     </servers>
 </project>
