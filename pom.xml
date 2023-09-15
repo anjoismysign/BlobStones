@@ -68,6 +68,13 @@
 
     <repositories>
         <repository>
+            <id>github</id>                                                                         
+            <url>https://anjoismysign:${GITHUB_TOKEN}@maven.pkg.github.com/jdsalasca/utils-web</url>                  
+            <snapshots>        
+                <enabled>true</enabled>                                             
+            </snapshots>                                                          
+        </repository>
+        <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
