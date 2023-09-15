@@ -93,11 +93,6 @@
             <artifactId>bloblib</artifactId>
             <version>1.691.2s</version>
             <scope>provided</scope>
-            <repository>
-                <id>github</id>
-                <name>GitHub Packages</name>
-                <url>https://maven.pkg.github.com/anjoismysign/BlobLib</url>
-            </repository>
         </dependency>
         <dependency>
             <groupId>dev.espi</groupId>
@@ -112,4 +107,11 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+             <repository>
+                      <id>github</id>
+                      <name>GitHub Packages</name>
+                      <url>https://maven.pkg.github.com/anjoismysign/BlobLib</url>
+             </repository>
+    </distributionManagement>
 </project>
