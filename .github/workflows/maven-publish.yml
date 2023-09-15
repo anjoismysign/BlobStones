@@ -23,12 +23,7 @@ jobs:
         java-version: '16'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ secrets.GITHUB_TOKEN }} # location for the settings.xml file
-
-    - name: Download Maven dependencies
-      run: mvn dependency:resolve -U -DaltDeploymentRepository=maven::default::https://maven.pkg.github.com/${{ github.repository }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
@@ -36,4 +31,4 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
