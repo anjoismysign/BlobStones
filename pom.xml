@@ -68,8 +68,9 @@
 
     <repositories>
         <repository>
-            <id>github</id>                                                                         
-            <url>https://anjoismysign:${env.T}@maven.pkg.github.com/anjoismysign/BlobLib</url>
+            <id>github</id>
+            <name>GitHub anjoismysign Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/anjoismysign/BlobLib</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
