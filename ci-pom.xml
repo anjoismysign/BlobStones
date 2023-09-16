@@ -12,7 +12,7 @@
 
     <groupId>us.mytheria</groupId>
     <artifactId>BlobStones-CI</artifactId>
-    <version>${project.version}</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>BlobStones</name>
