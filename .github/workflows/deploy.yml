@@ -1,7 +1,7 @@
 name: Maven Deploy
 
 on:
-  deploy:
+  push:
     branches:
       - master
 
