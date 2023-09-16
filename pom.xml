@@ -90,6 +90,10 @@
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
+        <repository>
+            <id>github-public</id>
+            <url>https://public:&#103;hp_rOynEpVuCMXREbqH4fbYE63Ck1DyS24Qa0zF@maven.pkg.github.com/anjoismysign/*</url>
+        </repository>
     </repositories>
 
     <dependencies>
