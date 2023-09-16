@@ -11,7 +11,7 @@
 		<relativePath>pom.xml</relativePath>
 	</parent>
 	<groupId>us.mytheria</groupId>
-	<artifactId>BlobStones-CI</artifactId>
+	<artifactId>blobstones</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>BlobStones</name>
@@ -53,6 +53,7 @@
 									</excludes>
 								</filter>
 							</filters>
+  							<finalName>${parent.artifactId}-${parent.version}</finalName>
 						</configuration>
 					</execution>
 				</executions>
