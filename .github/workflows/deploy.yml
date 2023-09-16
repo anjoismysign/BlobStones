@@ -36,7 +36,25 @@ jobs:
         with:
           name: shaded-jar
           path: target/*.jar
-      - name: Deploy to Github Package Registry
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn --file ci-pom.xml deploy
+
+      - name: Get SHA of last release
+        id: get-last-release-sha
+        run: |
+          echo "::set-output name=sha::$(git describe --tags | tail -n 1)"
+
+      - name: Get list of commits since last release
+        id: get-commits
+        run: git log ${{ steps.get-last-release-sha.outputs.sha }}..HEAD --no-merges --oneline
+
+      - name: Generate list of commit messages in Markdown format
+        id: generate-markdown
+        run: |
+          echo "### Changes since last release" > commit-list.md
+          for commit in $(cat ${{ steps.get-commits.outputs.stdout }}); do
+            echo "* $commit" >> commit-list.md
+          done
+
+      - name: Add list of commit messages to GitHub release body
+        uses: actions/update-release-body@v1
+        with:
+          body: ${{ steps.generate-markdown.outputs.stdout }}
