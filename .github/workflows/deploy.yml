@@ -37,19 +37,13 @@ jobs:
           name: shaded-jar
           path: target/*.jar
 
-      - name: Update release body
-        uses: actions/github-script@v6
+      - name: Create release
+        uses: github-actions/create-release@v5
         with:
-          script: |
-            const { updateRelease } = require('@octokit/rest');
+          tag_name: ${{ github.ref_name }}
+          release_name: ${{ github.ref_name }}
+          body: `
+            ### Changes since last release
 
-            const release = await updateRelease({
-              owner: '${{ github.repository_owner }}',
-              repo: '${{ github.repository }}',
-              release_id: '${{ github.event.release.id }}',
-              body: `
-                ### Changes since last release
-
-                ${{ steps.get-commits.outputs.stdout }}
-              `,
-            });
+            ${{ steps.get-commits.outputs.stdout }}
+          `
