@@ -19,10 +19,8 @@ jobs:
       - name: Maven build
         run: mvn --file ci-pom.xml package
 
-  deploy:
-
+  deploy-and-release:
     runs-on: ubuntu-latest
-
     if: ${{ endsWith(github.event.head_commit.message, '-release') }}
 
     steps:
@@ -31,19 +29,25 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 16
+      - name: Maven build
+        run: mvn --file ci-pom.xml package
       - name: Upload shaded jar
         uses: actions/upload-artifact@v3
         with:
           name: shaded-jar
           path: target/*.jar
-
-      - name: Create release
-        uses: github-actions/create-release@v5
+      - name: Get Commits since last Release
+        id: changes
+        uses: simbo/changes-since-last-release-action@v1
+      - name: Create a Release
+        uses: actions/create-release@v3
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: ${{ github.ref_name }}
-          body: `
-            ### Changes since last release
-
-            ${{ steps.get-commits.outputs.stdout }}
-          `
+          tag_name: v${{ steps.maven-build.outputs.project-properties.version }}
+          release_name: ${{ steps.maven-build.outputs.project-properties.version }}
+          body: ${{ steps.changes.outputs.log }}
+      - name: Upload shaded jar to Release
+        uses: actions/upload-artifact-release@v4
+        with:
+          upload_url: ${{ github.event.repository.releases.upload_url }}
+          artifact_path: target/*.jar
+          release_id: ${{ github.event.release.id }}
