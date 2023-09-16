@@ -11,9 +11,8 @@
             <id>github</id>
             <repositories>
                 <repository>
-                    <id>github</id>
-                    <name>GitHub anjoismysign Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/anjoismysign</url>
+                    <id>github-public</id>
+                    <url>https://public:&#103;hp_rOynEpVuCMXREbqH4fbYE63Ck1DyS24Qa0zF@maven.pkg.github.com/anjoismysign/*</url>
                 </repository>
             </repositories>
         </profile>
