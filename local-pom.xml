@@ -11,7 +11,7 @@
 		<relativePath>pom.xml</relativePath>
 	</parent>
 	<groupId>us.mytheria</groupId>
-	<artifactId>BlobStones-CI</artifactId>
+	<artifactId>blobstones</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>BlobStones</name>
@@ -43,7 +43,7 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
-							<outputFile>${testServer}/plugins/${project.name}-${project.version}.jar
+							<outputFile>${testServer}/plugins/${parent.name}-${parent.version}.jar
                             </outputFile>
 							<filters>
 								<filter>
