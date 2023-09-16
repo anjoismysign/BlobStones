@@ -52,7 +52,6 @@
 									</excludes>
 								</filter>
 							</filters>
-  							<finalName>${parent.artifactId}-${parent.version}</finalName>
 						</configuration>
 					</execution>
 				</executions>
