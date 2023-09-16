@@ -3,16 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>us.mytheria</groupId>
+        <artifactId>BlobStones</artifactId>
+        <version>1.0.11</version>
+    </parent>
 
     <groupId>us.mytheria</groupId>
     <artifactId>BlobStones</artifactId>
-    <version>1.0.11</version>
+    <version>${project.version}</version>
     <packaging>jar</packaging>
 
     <name>BlobStones</name>
 
     <properties>
-        <testServer>/Users/lbenav8095/Documents/Dev/Java/anjoismysign/1.19.4 ProtectionStones</testServer>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -63,69 +67,4 @@
             </resource>
         </resources>
     </build>
-
-    <repositories>
-        <repository>
-            <id>github</id>
-            <name>GitHub anjoismysign Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/anjoismysign/BlobLib</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>        
-                <enabled>true</enabled>                                             
-            </snapshots>                                                          
-        </repository>
-        <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>sk89q-repo</id>
-            <url>https://maven.enginehub.org/repo/</url>
-        </repository>
-        <repository>
-            <id>github-public</id>
-            <url>https://public:&#103;hp_rOynEpVuCMXREbqH4fbYE63Ck1DyS24Qa0zF@maven.pkg.github.com/anjoismysign/*</url>
-        </repository>
-    </repositories>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.20.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>us.mytheria</groupId>
-            <artifactId>bloblib</artifactId>
-            <version>1.691.2s</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>dev.espi</groupId>
-            <artifactId>protectionstones</artifactId>
-            <version>2.10.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sk89q.worldguard</groupId>
-            <artifactId>worldguard-bukkit</artifactId>
-            <version>7.0.7</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub anjoismysign Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/anjoismysign/BlobStones</url>
-        </repository>
-    </distributionManagement>
 </project>
