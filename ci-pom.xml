@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>us.mytheria</groupId>
-    <artifactId>BlobStones</artifactId>
+    <artifactId>BlobStones-CI</artifactId>
     <version>${project.version}</version>
     <packaging>jar</packaging>
 
