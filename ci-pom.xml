@@ -12,7 +12,6 @@
 	</parent>
 	<groupId>us.mytheria</groupId>
 	<artifactId>blobstones</artifactId>
-	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>BlobStones</name>
 	<properties>
