@@ -37,24 +37,19 @@ jobs:
           name: shaded-jar
           path: target/*.jar
 
-      - name: Get SHA of last release
-        id: get-last-release-sha
-        run: |
-          echo "::set-output name=sha::$(git describe --tags | tail -n 1)"
-
-      - name: Get list of commits since last release
-        id: get-commits
-        run: git log ${{ steps.get-last-release-sha.outputs.sha }}..HEAD --no-merges --oneline
-
-      - name: Generate list of commit messages in Markdown format
-        id: generate-markdown
-        run: |
-          echo "### Changes since last release" > commit-list.md
-          for commit in $(cat ${{ steps.get-commits.outputs.stdout }}); do
-            echo "* $commit" >> commit-list.md
-          done
-
-      - name: Add list of commit messages to GitHub release body
-        uses: actions/update-release-body@v1
+      - name: Update release body
+        uses: actions/github-script@v6
         with:
-          body: ${{ steps.generate-markdown.outputs.stdout }}
+          script: |
+            const { updateRelease } = require('@octokit/rest');
+
+            const release = await updateRelease({
+              owner: '${{ github.repository_owner }}',
+              repo: '${{ github.repository }}',
+              release_id: '${{ github.event.release.id }}',
+              body: `
+                ### Changes since last release
+
+                ${{ steps.get-commits.outputs.stdout }}
+              `,
+            });
