@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>us.mytheria</groupId>
     <artifactId>BlobStones</artifactId>
-    <version>1.0.12</version>
+    <version>1.0.12b</version>
     <packaging>pom</packaging>
 
     <!-- Repository configuration shared by child POMs -->
