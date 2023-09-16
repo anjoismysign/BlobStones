@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: shaded-jar
-          path: target/*.jar
+          path: target/*-shaded.jar
       - name: Get Commits since last Release
         id: changes
         uses: simbo/changes-since-last-release-action@v1
