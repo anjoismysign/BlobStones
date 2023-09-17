@@ -19,8 +19,10 @@ jobs:
       - name: Maven build
         run: mvn --file ci-pom.xml package
 
-  deploy-and-release:
+  deploy:
+
     runs-on: ubuntu-latest
+
     if: ${{ endsWith(github.event.head_commit.message, '-release') }}
 
     steps:
@@ -29,33 +31,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 16
-      - name: Maven build
-        run: mvn --file ci-pom.xml package
       - name: Upload shaded jar
         uses: actions/upload-artifact@v3
         with:
           name: shaded-jar
           path: target/*-shaded.jar
-      - name: Get Commits since last Release
-        id: changes
-        uses: simbo/changes-since-last-release-action@v1
-      - name: Create a Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Deploy to Github Package Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          draft: false
-          prerelease: false
-          release_name: ${{ steps.maven-build.outputs.project-properties.version }}
-          tag_name: v${{ steps.maven-build.outputs.project-properties.version }}
-          body: ${{ steps.changes.outputs.log }}
-      - name: upload artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: BlobStones-${{ steps.maven-build.outputs.project-properties.version }}.jar
-          asset_content_type: application/java-archive
-          asset_path: ${{ steps.upload-artifact.outputs.artifact_path }}
+        run: mvn --file ci-pom.xml deploy
