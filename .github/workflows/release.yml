@@ -1,9 +1,9 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -23,17 +23,8 @@ jobs:
         run: |
           echo "Changes since ${{ steps.changes.outputs.last-tag }}:"
           echo "${{ steps.changes.outputs.log }}"
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update Release Body
+        id: update_release
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            ```Changes since ${{ steps.changes.outputs.last-tag }}```
-
-            ${{ steps.changes.outputs.log }}
-          draft: false
-          prerelease: false
+          body: ${{ steps.changes.outputs.log }}
