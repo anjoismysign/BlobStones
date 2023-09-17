@@ -29,5 +29,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           id: ${{ github.event.release.id }}
           body: |
-            "Changes since ```${{ steps.changes.outputs.last-tag }}```"
-            "${{ steps.changes.outputs.log }}"
+            Changes since ```${{ steps.changes.outputs.last-tag }}```
+            ${{ steps.changes.outputs.log }}
