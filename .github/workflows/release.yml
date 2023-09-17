@@ -2,8 +2,8 @@ name: Release
 
 on:
   release:
-    types:
-      - created
+    types: [published]
+    branches: [master]
 
 jobs:
   build:
@@ -23,8 +23,11 @@ jobs:
         run: |
           echo "Changes since ${{ steps.changes.outputs.last-tag }}:"
           echo "${{ steps.changes.outputs.log }}"
-      - name: Update Release Body
-        id: update_release
-        uses: softprops/action-gh-release@v1
+      - name: Edit Release
+        uses: irongut/EditRelease@v1.2.0
         with:
-          body: ${{ steps.changes.outputs.log }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          id: ${{ github.event.release.id }}
+          body: |
+            "Changes since ```${{ steps.changes.outputs.last-tag }}```"
+            "${{ steps.changes.outputs.log }}"
