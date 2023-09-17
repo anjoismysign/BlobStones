@@ -9,6 +9,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: endsWith(github.event.head_commit.message, '-package')
 
     steps:
       - uses: actions/checkout@v1
@@ -23,7 +24,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    if: ${{ endsWith(github.event.head_commit.message, '-release') }}
+    if: ${{ endsWith(github.event.head_commit.message, '-package') }}
 
     steps:
       - uses: actions/checkout@v1
