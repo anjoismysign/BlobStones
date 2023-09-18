@@ -64,28 +64,6 @@
             </resource>
         </resources>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>us.mytheria</groupId>
-            <artifactId>bloblib</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>dev.espi</groupId>
-            <artifactId>protectionstones</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sk89q.worldguard</groupId>
-            <artifactId>worldguard-bukkit</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
     <scm>
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
