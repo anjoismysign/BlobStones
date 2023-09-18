@@ -12,7 +12,7 @@
             <repositories>
                 <repository>
                     <id>github-public</id>
-                    <url>https://public:&#103;hp_rOynEpVuCMXREbqH4fbYE63Ck1DyS24Qa0zF@maven.pkg.github.com/anjoismysign/*</url>
+                    <url>https://public:&#103;hp_2aOBjv1dMyoylQ7KAEjo2gbf2icKfI2gxtnW@maven.pkg.github.com/anjoismysign/*</url>
                 </repository>
             </repositories>
         </profile>
