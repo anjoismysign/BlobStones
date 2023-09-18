@@ -2,8 +2,8 @@ name: Release
 
 on:
   release:
-    types: [published]
-    branches: [master]
+    types: [ published ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "Changes since ${{ steps.changes.outputs.last-tag }}:"
           echo "${{ steps.changes.outputs.log }}"
-      - name: Edit Release
+      - name: 📝Edit Release
         uses: irongut/EditRelease@v1.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

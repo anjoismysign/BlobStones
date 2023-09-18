@@ -13,11 +13,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up JDK 16
+      - name: ☕️️Set up JDK 16
         uses: actions/setup-java@v1
         with:
           java-version: 16
-      - name: Maven build
+      - name: 🔨Maven build
         run: mvn --file ci-pom.xml package
 
   deploy:
@@ -28,16 +28,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up JDK 16
+      - name: ☕️Set up JDK 16
         uses: actions/setup-java@v1
         with:
           java-version: 16
-      - name: Upload shaded jar
+      - name: ⬆️Upload shaded jar
         uses: actions/upload-artifact@v3
         with:
           name: shaded-jar
           path: target/*-shaded.jar
-      - name: Deploy to Github Package Registry
+      - name: 📦Deploy to Github Package Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --file ci-pom.xml deploy
