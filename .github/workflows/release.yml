@@ -6,7 +6,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  edit_release:
     runs-on: ubuntu-latest
 
     steps:

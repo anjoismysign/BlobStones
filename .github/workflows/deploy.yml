@@ -6,37 +6,15 @@ on:
       - master
 
 jobs:
-  build:
-
+  deploy_package:
     runs-on: ubuntu-latest
-    if: endsWith(github.event.head_commit.message, '-package')
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: ☕️️Set up JDK 16
-        uses: actions/setup-java@v1
-        with:
-          java-version: 16
-      - name: 🔨Maven build
-        run: mvn --file ci-pom.xml package
-
-  deploy:
-
-    runs-on: ubuntu-latest
-
     if: ${{ endsWith(github.event.head_commit.message, '-package') }}
-
     steps:
       - uses: actions/checkout@v1
       - name: ☕️Set up JDK 16
         uses: actions/setup-java@v1
         with:
           java-version: 16
-      - name: ⬆️Upload shaded jar
-        uses: actions/upload-artifact@v3
-        with:
-          name: shaded-jar
-          path: target/*-shaded.jar
       - name: 📦Deploy to Github Package Registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
