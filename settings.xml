@@ -6,18 +6,6 @@
         <activeProfile>github</activeProfile>
     </activeProfiles>
 
-    <profiles>
-        <profile>
-            <id>github</id>
-            <repositories>
-                <repository>
-                    <id>github-public</id>
-                    <url>https://public:&#103;hp_2aOBjv1dMyoylQ7KAEjo2gbf2icKfI2gxtnW@maven.pkg.github.com/anjoismysign/*</url>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
-
     <servers>
         <server>
             <id>github</id>
