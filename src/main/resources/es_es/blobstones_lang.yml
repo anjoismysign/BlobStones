@@ -1,0 +1,20 @@
+Locale: es_es
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&lESCRIBE EL'
+    Subtitle: '&7Nombre de la protección'
+    Actionbar: '&7Si esto es un error, escribe ''cancel'''
+  Rename-Timeout:
+    Type: TITLE
+    Title: '&f&lMUY LENTO'
+    Subtitle: '&7Te tomó mucho escribir el nombre'
+System:
+  Warmup-Failed:
+    Type: TITLE
+    Title: '&c&lCANCELADO'
+    Subtitle: '&7Te moviste antes de tiempo'
+    BlobSound: System.Alert
+  Teleport-Warmup:
+    Type: ACTIONBAR
+    Message: '&7Teletransportando en &f%time%&7...'

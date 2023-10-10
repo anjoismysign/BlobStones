@@ -1,5 +1,6 @@
 package us.mytheria.blobstones.director;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -7,29 +8,47 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.mytheria.bloblib.entities.GenericManagerDirector;
 import us.mytheria.blobstones.BlobStones;
+import us.mytheria.blobstones.engine.ProtectionStonesEngine;
 
 public class StonesManagerDirector extends GenericManagerDirector<BlobStones> {
 
     public StonesManagerDirector(BlobStones blobPlugin) {
         super(blobPlugin);
-        registerAndUpdateBlobInventory("ManageFlags");
-        registerAndUpdateBlobInventory("ManageMembers");
-        registerAndUpdateBlobInventory("ManageOwners");
-        registerAndUpdateBlobInventory("ManageProtection");
-        registerAndUpdateBlobInventory("WorldNavigator");
+        registerBlobMessage("es_es/blobstones_lang");
+        registerBlobInventory("ManageFlags", "es_es/ManageFlags");
+        registerBlobInventory("ManageMembers", "es_es/ManageMembers");
+        registerBlobInventory("ManageOwners", "es_es/ManageOwners");
+        registerBlobInventory("ManageProtection", "es_es/ManageProtection");
+        registerBlobInventory("WorldNavigator", "es_es/WorldNavigator");
         addManager("Config", new ConfigManager(this));
-        addManager("Inventory", new InventoryManager(this));
-        addManager("Listener", new ListenerManager(this));
+        addManager("Engine", new ProtectionStonesEngine(this));
 
         getPlugin().getCommand("blobstones").setExecutor(new CommandExecutor() {
             @Override
-            public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-                if (!(commandSender instanceof Player player))
-                    return false;
-                getInventoryManager().openWorldNavigator(player);
+            public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
+                if (!(sender instanceof Player player)) {
+                    if (args.length < 1) {
+                        sender.sendMessage("You must specify a player.");
+                        return true;
+                    }
+                    String arg = args[0];
+                    Player target = Bukkit.getPlayer(arg);
+                    if (target == null) {
+                        sender.sendMessage("Player not found.");
+                        return true;
+                    }
+                    getEngine().openWorldNavigator(target);
+                    return true;
+                }
+                getEngine().openWorldNavigator(player);
                 return true;
             }
         });
+    }
+
+    @Override
+    public void reload() {
+        getEngine().reload();
     }
 
     @Override
@@ -40,8 +59,8 @@ public class StonesManagerDirector extends GenericManagerDirector<BlobStones> {
     /**
      * @return The InventoryManager
      */
-    public InventoryManager getInventoryManager() {
-        return getManager("Inventory", InventoryManager.class);
+    public ProtectionStonesEngine getEngine() {
+        return getManager("Engine", ProtectionStonesEngine.class);
     }
 
     /**

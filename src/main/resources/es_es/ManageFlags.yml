@@ -1,0 +1,61 @@
+Locale: es_es
+Title: Mi Protección > Flags
+Size: 27
+Buttons:
+  AwkwardDesign:
+    ItemStack:
+      Material: GRAY_STAINED_GLASS_PANE
+      CustomModelData: 0
+      DisplayName: ' '
+    Slot: 19-26
+  Return:
+    ItemStack:
+      Material: HEAD-http://textures.minecraft.net/texture/e9cdb9af38cf41daa53bc8cda7665c509632d14e678f0f19f263f46e541d8a30
+      CustomModelData: 0
+      DisplayName: '&6Regresar'
+    Slot: 18
+  PvP:
+    ItemStack:
+      Material: HEAD-http://textures.minecraft.net/texture/1765341353c029e9b655f4f57931ae6adc2c7a73c657945d945a307641d3778
+      CustomModelData: 0
+      DisplayName: '&6El PvP es permitido? &8[%state%&8]'
+    Slot: 0
+  Mob-Spawning:
+    ItemStack:
+      Material: SPAWNER
+      CustomModelData: 0
+      DisplayName: '&6Los mobs pueden spawnear? &8[%state%&8]'
+    Slot: 1
+  Creeper-Explosion:
+    ItemStack:
+      Material: GUNPOWDER
+      CustomModelData: 0
+      DisplayName: '&6Explosiones de creeper? &8[%state%&8]'
+    Slot: 2
+  Wither-Damage:
+    ItemStack:
+      Material: WITHER_SKELETON_SKULL
+      CustomModelData: 0
+      DisplayName: '&6El daño por wither? &8[%state%&8]'
+    Slot: 3
+  Ghast-Fireball:
+    ItemStack:
+      Material: FIRE_CHARGE
+      CustomModelData: 0
+      DisplayName: '&6Las bolas de fuego de ghast? &8[%state%&8]'
+    Slot: 4
+  Passthrough:
+    ItemStack:
+      Material: IRON_AXE
+      CustomModelData: 0
+      DisplayName: '&6Los jugadores pueden construir? &8[%state%&8]'
+    Slot: 5
+  Use:
+    ItemStack:
+      Material: OAK_BUTTON
+      CustomModelData: 0
+      DisplayName: '&6Los jugadores pueden usar? &8[%state%&8]'
+    Slot: 6
+# Built with BlobLib's inventory framework.
+# If you wish to push its limits,
+# feel free contacting anjoismysign (preferably on Discord)

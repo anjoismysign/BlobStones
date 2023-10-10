@@ -12,14 +12,15 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockVector;
 import us.mytheria.bloblib.BlobLibAssetAPI;
+import us.mytheria.bloblib.api.BlobLibMessageAPI;
+import us.mytheria.bloblib.api.BlobLibSoundAPI;
 import us.mytheria.bloblib.entities.MinecraftTimeUnit;
 import us.mytheria.bloblib.entities.message.BlobMessage;
 import us.mytheria.blobstones.BlobStones;
 import us.mytheria.blobstones.director.ConfigManager;
-import us.mytheria.blobstones.director.ListenerManager;
+import us.mytheria.blobstones.engine.StonesEngine;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Consumer;
 
@@ -28,14 +29,12 @@ public class MovementWarmup implements Listener {
     private static final HashSet<UUID> warmup = new HashSet<>();
     private final String key;
     private BlobMessage warmupFailMessage;
-    private static final BlobMessage teleportWarmupMessage =
-            Objects.requireNonNull(BlobLibAssetAPI.getMessage("System.Teleport-Warmup"));
     private final ConfigManager configManager;
 
-    public MovementWarmup(ListenerManager listenerManager) {
+    public MovementWarmup(StonesEngine engine) {
         if (plugin == null)
-            plugin = listenerManager.getPlugin();
-        this.configManager = listenerManager.getManagerDirector().getConfigManager();
+            plugin = engine.getPlugin();
+        this.configManager = engine.getManagerDirector().getConfigManager();
         key = "Listeners.Warmup-PlayerMoveEvent.Enabled";
         reload();
     }
@@ -129,7 +128,7 @@ public class MovementWarmup implements Listener {
             if (onlinePlayer == null)
                 return;
             onlinePlayer.teleport(location);
-            BlobLibAssetAPI.getSound("BlobStones.Teleport").handle(onlinePlayer);
-        }, teleportWarmupMessage);
+            BlobLibSoundAPI.getInstance().getSound("BlobStones.Teleport").handle(onlinePlayer);
+        }, BlobLibMessageAPI.getInstance().getMessage("System.Teleport-Warmup", player));
     }
 }

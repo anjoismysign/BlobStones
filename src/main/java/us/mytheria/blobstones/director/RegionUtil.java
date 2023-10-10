@@ -18,26 +18,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class RegionUtil {
-    private static int PARTICLE_VIEW_DISTANCE_LIMIT = 150;
+    private static final int PARTICLE_VIEW_DISTANCE_LIMIT = 150;
 
-    private static boolean handlePinkParticle(Player p, Location l) {
-        if (p.getLocation().distance(l) > PARTICLE_VIEW_DISTANCE_LIMIT || Math.abs(l.getY() - p.getLocation().getY()) > 30)
+    private static boolean handlePinkParticle(Player player, Location location) {
+        if (player.getLocation().distance(location) > PARTICLE_VIEW_DISTANCE_LIMIT || Math.abs(location.getY() - player.getLocation().getY()) > 30)
             return false;
-        ParticlesUtil.persistRedstoneParticle(p, l, new Particle.DustOptions(Color.fromRGB(233, 30, 99), 2), 30);
+        ParticlesUtil.persistRedstoneParticle(player, location, new Particle.DustOptions(Color.fromRGB(233, 30, 99), 2), 30);
         return true;
     }
 
-    private static boolean handleBlueParticle(Player p, Location l) {
-        if (p.getLocation().distance(l) > PARTICLE_VIEW_DISTANCE_LIMIT || Math.abs(l.getY() - p.getLocation().getY()) > 30)
+    private static boolean handleBlueParticle(Player player, Location location) {
+        if (player.getLocation().distance(location) > PARTICLE_VIEW_DISTANCE_LIMIT || Math.abs(location.getY() - player.getLocation().getY()) > 30)
             return false;
-        ParticlesUtil.persistRedstoneParticle(p, l, new Particle.DustOptions(Color.fromRGB(0, 255, 255), 2), 30);
+        ParticlesUtil.persistRedstoneParticle(player, location, new Particle.DustOptions(Color.fromRGB(0, 255, 255), 2), 30);
         return true;
     }
 
-    private static boolean handlePurpleParticle(Player p, Location l) {
-        if (p.getLocation().distance(l) > PARTICLE_VIEW_DISTANCE_LIMIT || Math.abs(l.getY() - p.getLocation().getY()) > 30)
+    private static boolean handlePurpleParticle(Player player, Location location) {
+        if (player.getLocation().distance(location) > PARTICLE_VIEW_DISTANCE_LIMIT || Math.abs(location.getY() - player.getLocation().getY()) > 30)
             return false;
-        ParticlesUtil.persistRedstoneParticle(p, l, new Particle.DustOptions(Color.fromRGB(255, 0, 255), 10), 30);
+        ParticlesUtil.persistRedstoneParticle(player, location, new Particle.DustOptions(Color.fromRGB(255, 0, 255), 10), 30);
         return true;
     }
 

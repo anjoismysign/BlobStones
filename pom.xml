@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>us.mytheria</groupId>
     <artifactId>BlobStones</artifactId>
-    <version>1.0.12f</version>
+    <version>1.0.13f</version>
     <packaging>pom</packaging>
-    
+
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>us.mytheria</groupId>
             <artifactId>bloblib</artifactId>
-            <version>1.691.2s</version>
+            <version>1.697.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
