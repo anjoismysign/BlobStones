@@ -1,0 +1,70 @@
+Locale: pt_pt
+Title: Minha Proteção
+Size: 27
+Buttons:
+  Background:
+    ItemStack:
+      Material: GRAY_STAINED_GLASS_PANE
+      CustomModelData: 0
+      DisplayName: ' '
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      CustomModelData: 0
+      DisplayName: '&6Donos'
+      Lore:
+        - '&7Clique para gerenciar'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      CustomModelData: 0
+      DisplayName: '&6Membros'
+      Lore:
+        - '&7Clique para gerenciar'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      CustomModelData: 0
+      DisplayName: '&6Flags'
+      Lore:
+        - '&7Clique para gerenciar'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      CustomModelData: 0
+      DisplayName: '&6Renomear'
+      Lore:
+        - '&7Clique para renomear'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      CustomModelData: 0
+      DisplayName: '&6Teleportar'
+      Lore:
+        - '&7Clique para ir'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      CustomModelData: 0
+      DisplayName: '&6Mostrar'
+      Lore:
+        - '&7Vai mostrar/ocultar a pedra'
+        - '&7Estado: &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      CustomModelData: 0
+      DisplayName: '&6Visualizar'
+      Lore:
+        - '&7Clique para ver os limites da proteção'
+    Slot: 21
+# Built with BlobLib's inventory framework.
+# If you wish to push its limits,
+# feel free contacting anjoismysign (preferably on Discord)

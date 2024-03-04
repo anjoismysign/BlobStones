@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockVector;
-import us.mytheria.bloblib.BlobLibAssetAPI;
 import us.mytheria.bloblib.api.BlobLibMessageAPI;
 import us.mytheria.bloblib.api.BlobLibSoundAPI;
 import us.mytheria.bloblib.entities.MinecraftTimeUnit;
@@ -43,8 +42,7 @@ public class MovementWarmup implements Listener {
         HandlerList.unregisterAll(this);
         if (configManager.getBoolean(key)) {
             Bukkit.getPluginManager().registerEvents(this, plugin);
-            warmupFailMessage = BlobLibAssetAPI
-                    .getMessage(configManager.getString("Listeners.Warmup-PlayerMoveEvent.Fail-Message"));
+            warmupFailMessage = BlobLibMessageAPI.getInstance().getMessage(configManager.getString("Listeners.Warmup-PlayerMoveEvent.Fail-Message"));
             if (warmupFailMessage == null)
                 throw new IllegalStateException("Warmup Fail-Message is null. " +
                         "Check config.yml");
@@ -69,7 +67,7 @@ public class MovementWarmup implements Listener {
         if (from.equals(to))
             return;
         warmup.remove(uuid);
-        warmupFailMessage.handle(player);
+        warmupFailMessage.localize(player.getLocale()).handle(player);
     }
 
     private static void ofTicks(long ticks,

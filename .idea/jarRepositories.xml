@@ -7,6 +7,11 @@
       <option name="url" value="https://public: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@maven.pkg.github.com/anjoismysign/*" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="github" />
+      <option name="name" value="github" />
+      <option name="url" value="https://maven.pkg.github.com/anjoismysign/REPOSITORY" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="sonatype" />
       <option name="name" value="sonatype" />
       <option name="url" value="https://oss.sonatype.org/content/groups/public/" />

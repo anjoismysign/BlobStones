@@ -14,12 +14,12 @@ public class StonesManagerDirector extends GenericManagerDirector<BlobStones> {
 
     public StonesManagerDirector(BlobStones blobPlugin) {
         super(blobPlugin);
-        registerBlobMessage("es_es/blobstones_lang");
-        registerBlobInventory("ManageFlags", "es_es/ManageFlags");
-        registerBlobInventory("ManageMembers", "es_es/ManageMembers");
-        registerBlobInventory("ManageOwners", "es_es/ManageOwners");
-        registerBlobInventory("ManageProtection", "es_es/ManageProtection");
-        registerBlobInventory("WorldNavigator", "es_es/WorldNavigator");
+        registerBlobMessage("es_es/blobstones_lang", "pt_pt/blobstones_lang");
+        registerBlobInventory("ManageFlags", "es_es/ManageFlags", "pt_pt/ManageFlags");
+        registerBlobInventory("ManageMembers", "es_es/ManageMembers", "pt_pt/ManageMembers");
+        registerBlobInventory("ManageOwners", "es_es/ManageOwners", "pt_pt/ManageOwners");
+        registerBlobInventory("ManageProtection", "es_es/ManageProtection", "pt_pt/ManageProtection");
+        registerBlobInventory("WorldNavigator", "es_es/WorldNavigator", "pt_pt/WorldNavigator");
         addManager("Config", new ConfigManager(this));
         addManager("Engine", new ProtectionStonesEngine(this));
 
