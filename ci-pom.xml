@@ -7,14 +7,14 @@
     <parent>
         <groupId>us.mytheria</groupId>
         <artifactId>BlobStones</artifactId>
-        <version>1.0.13f</version>
+        <version>1.0.14</version>
         <relativePath>pom.xml</relativePath>
     </parent>
     <artifactId>blobstones</artifactId>
     <packaging>jar</packaging>
     <name>BlobStones</name>
     <build>
-        <finalName>${name}-${parent.version}</finalName>
+        <finalName>${project.name}-${project.parent.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
