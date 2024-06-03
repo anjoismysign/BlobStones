@@ -401,9 +401,13 @@ public class ProtectionStonesEngine extends StonesEngine {
                     return builder.build();
                 },
                 uuid -> {
-                    if (region.getOwners().size() == 1)
+                    if (region.getOwners().size() > 1)
+                        region.removeOwner(uuid);
+                    if (uuid.equals(player.getUniqueId())) {
+                        removeMapping(player);
+                        player.closeInventory();
                         return;
-                    region.removeOwner(uuid);
+                    }
                     openManageOwners(player);
                 }, this::openManageProtection);
     }
