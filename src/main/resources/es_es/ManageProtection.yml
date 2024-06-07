@@ -3,15 +3,11 @@ Title: Mi Protección
 Size: 27
 Buttons:
   Background:
-    ItemStack:
-      Material: GRAY_STAINED_GLASS_PANE
-      CustomModelData: 0
-      DisplayName: ' '
+    ItemStack: BlobLib.Background
     Slot: 0-26
   Owners:
     ItemStack:
       Material: ENDER_CHEST
-      CustomModelData: 0
       DisplayName: '&6Dueños'
       Lore:
       - '&7Click para administrar'
@@ -19,7 +15,6 @@ Buttons:
   Members:
     ItemStack:
       Material: CHEST
-      CustomModelData: 0
       DisplayName: '&6Miembros'
       Lore:
       - '&7Click para administrar'
@@ -27,7 +22,6 @@ Buttons:
   Flags:
     ItemStack:
       Material: COMMAND_BLOCK
-      CustomModelData: 0
       DisplayName: '&6Flags'
       Lore:
       - '&7Click para administrar'
@@ -35,7 +29,6 @@ Buttons:
   Rename:
     ItemStack:
       Material: NAME_TAG
-      CustomModelData: 0
       DisplayName: '&6Renombrar'
       Lore:
       - '&7Click para renombrar'
@@ -43,7 +36,6 @@ Buttons:
   Teleport:
     ItemStack:
       Material: ENDER_PEARL
-      CustomModelData: 0
       DisplayName: '&6Teletransportar'
       Lore:
       - '&7Click para ir'
@@ -51,7 +43,6 @@ Buttons:
   Show:
     ItemStack:
       Material: GOLDEN_CARROT
-      CustomModelData: 0
       DisplayName: '&6Mostrar'
       Lore:
       - '&7Va a mostrar/ocultar la piedra'
@@ -60,11 +51,7 @@ Buttons:
   View:
     ItemStack:
       Material: ENDER_EYE
-      CustomModelData: 0
       DisplayName: '&6Vista'
       Lore:
       - '&7Click para ver los límites de la protección'
     Slot: 21
-# Built with BlobLib's inventory framework.
-# If you wish to push its limits,
-# feel free contacting anjoismysign (preferably on Discord)

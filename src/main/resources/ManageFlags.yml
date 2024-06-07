@@ -1,17 +1,11 @@
-Title: 'My Protection > Flags'
+Title: My Protection > Flags
 Size: 27
 Buttons:
   AwkwardDesign:
-    ItemStack:
-      Material: GRAY_STAINED_GLASS_PANE
-      CustomModelData: 0
-      DisplayName: " "
+    ItemStack: BlobLib.Background
     Slot: 19-26
   Return:
-    ItemStack:
-      Material: HEAD-http://textures.minecraft.net/texture/e9cdb9af38cf41daa53bc8cda7665c509632d14e678f0f19f263f46e541d8a30
-      CustomModelData: 0
-      DisplayName: '&6Return'
+    ItemStack: BlobLib.Return
     Slot: 18
   PvP:
     ItemStack:
@@ -55,6 +49,3 @@ Buttons:
       CustomModelData: 0
       DisplayName: '&6Can players use? &8[%state%&8]'
     Slot: 6
-#Built with BlobLib's inventory framework.
-#If you wish to push its limits,
-#feel free contacting anjoismysign (preferably on Discord)

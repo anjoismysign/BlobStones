@@ -1,69 +1,56 @@
-Title: 'My Protection'
+Title: My Protection
 Size: 27
 Buttons:
   Background:
-    ItemStack:
-      Material: GRAY_STAINED_GLASS_PANE
-      CustomModelData: 0
-      DisplayName: " "
+    ItemStack: BlobLib.Background
     Slot: 0-26
   Owners:
     ItemStack:
       Material: ENDER_CHEST
-      CustomModelData: 0
       DisplayName: '&6Owners'
       Lore:
-        - '&7Click to manage owners'
+      - '&7Click to manage owners'
     Slot: 11
   Members:
     ItemStack:
       Material: CHEST
-      CustomModelData: 0
       DisplayName: '&6Members'
       Lore:
-        - '&7Click to manage members'
+      - '&7Click to manage members'
     Slot: 12
   Show:
     ItemStack:
       Material: GOLDEN_CARROT
-      CustomModelData: 0
       DisplayName: '&6Show'
       Lore:
-        - '&7Will either show or hide the block'
-        - '&7Status: &r%show%'
+      - '&7Will either show or hide the block'
+      - '&7Status: &r%show%'
     Slot: 13
   Flags:
     ItemStack:
       Material: COMMAND_BLOCK
-      CustomModelData: 0
       DisplayName: '&6Flags'
       Lore:
-        - '&7Click to manage flags'
+      - '&7Click to manage flags'
     Slot: 14
   Rename:
     ItemStack:
       Material: NAME_TAG
-      CustomModelData: 0
       DisplayName: '&6Rename'
       Lore:
-        - '&7Click to rename'
+      - '&7Click to rename'
     Slot: 15
   View:
     ItemStack:
       Material: ENDER_EYE
-      CustomModelData: 0
       DisplayName: '&6View'
       Lore:
-        - '&7Click to view the region''s boundaries'
+      - '&7Click to view the region''s boundaries'
     Slot: 21
   Teleport:
     ItemStack:
       Material: ENDER_PEARL
-      CustomModelData: 0
       DisplayName: '&6Teleport'
       Lore:
-        - '&7Click to teleport'
+      - '&7Click to teleport'
     Slot: 22
-#Built with BlobLib's inventory framework.
-#If you wish to push its limits,
-#feel free contacting anjoismysign (preferably on Discord)
