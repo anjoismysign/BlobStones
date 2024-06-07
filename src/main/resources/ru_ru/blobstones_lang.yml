@@ -1,0 +1,20 @@
+Locale: ru_ru
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&lНАПИШИТЕ'
+    Subtitle: '&7Название защиты'
+    Actionbar: '&7Если это ошибка, напишите ''cancel'''
+  Rename-Timeout:
+    Type: TITLE
+    Title: '&f&lОЧЕНЬ МЕДЛЕННО'
+    Subtitle: '&7Вы затратили слишком много времени на написание имени'
+System:
+  Warmup-Failed:
+    Type: TITLE
+    Title: '&c&lОТМЕНЕНО'
+    Subtitle: '&7Вы двигались перед сроком'
+    BlobSound: System.Alert
+  Teleport-Warmup:
+    Type: ACTIONBAR
+    Message: '&7Телепортация через &f%time%&7...'

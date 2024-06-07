@@ -1,0 +1,57 @@
+Locale: ru_ru
+Title: Моя Защита
+Size: 27
+Buttons:
+  Background:
+    ItemStack: BlobLib.Background
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      DisplayName: '&6Владельцы'
+      Lore:
+      - '&7Нажмите, чтобы управлять'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      DisplayName: '&6Участники'
+      Lore:
+      - '&7Нажмите, чтобы управлять'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      DisplayName: '&6Флаги'
+      Lore:
+      - '&7Нажмите, чтобы управлять'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      DisplayName: '&6Переименовать'
+      Lore:
+      - '&7Нажмите, чтобы переименовать'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      DisplayName: '&6Телепортироваться'
+      Lore:
+      - '&7Нажмите, чтобы телепортироваться'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      DisplayName: '&6Показать'
+      Lore:
+      - '&7Показать/скрыть камень'
+      - '&7Состояние: &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      DisplayName: '&6Просмотр'
+      Lore:
+      - '&7Нажмите, чтобы увидеть границы защиты'
+    Slot: 21
