@@ -1,0 +1,20 @@
+Locale: el_gr
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&lΓΡΑΨΕ ΤΟ'
+    Subtitle: '&7Όνομα προστασίας'
+    Actionbar: '&7Αν είναι λάθος, γράψτε ''cancel'''
+  Rename-Timeout:
+    Type: TITLE
+    Title: '&f&lΠΟΛΥ ΑΡΓΟ'
+    Subtitle: '&7Σας πήρε πολύ χρόνο να γράψετε το όνομα'
+System:
+  Warmup-Failed:
+    Type: TITLE
+    Title: '&c&lΑΚΥΡΩΣΗ'
+    Subtitle: '&7Κινηθήκατε πριν από την ώρα'
+    BlobSound: System.Alert
+  Teleport-Warmup:
+    Type: ACTIONBAR
+    Message: '&7Μεταφορά σε εξέλιξη σε &f%time%&7...'

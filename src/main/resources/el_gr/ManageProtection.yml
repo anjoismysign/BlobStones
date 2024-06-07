@@ -1,0 +1,57 @@
+Locale: el_gr
+Title: Η Προστασία Μου
+Size: 27
+Buttons:
+  Background:
+    ItemStack: BlobLib.Background
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      DisplayName: '&6Ιδιοκτήτες'
+      Lore:
+      - '&7Κάντε κλικ για διαχείριση'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      DisplayName: '&6Μέλη'
+      Lore:
+      - '&7Κάντε κλικ για διαχείριση'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      DisplayName: '&6Σημαίες Προστασίας'
+      Lore:
+      - '&7Κάντε κλικ για διαχείριση'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      DisplayName: '&6Μετονομασία'
+      Lore:
+      - '&7Κάντε κλικ για μετονομασία'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      DisplayName: '&6Τηλεμεταφορά'
+      Lore:
+      - '&7Κάντε κλικ για μετάβαση'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      DisplayName: '&6Εμφάνιση'
+      Lore:
+      - '&7Θα εμφανίσει/κρύψει την πέτρα'
+      - '&7Κατάσταση: &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      DisplayName: '&6Προβολή'
+      Lore:
+      - '&7Κάντε κλικ για να δείτε τα όρια της προστασίας'
+    Slot: 21

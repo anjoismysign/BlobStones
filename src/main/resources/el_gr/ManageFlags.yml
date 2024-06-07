@@ -1,0 +1,45 @@
+Locale: el_gr
+Title: Η Προστασία Μου > Σημαίες
+Size: 27
+Buttons:
+  AwkwardDesign:
+    ItemStack: BlobLib.Background
+    Slot: 19-26
+  Return:
+    ItemStack: BlobLib.Return
+    Slot: 18
+  PvP:
+    ItemStack:
+      Material: HEAD-http://textures.minecraft.net/texture/1765341353c029e9b655f4f57931ae6adc2c7a73c657945d945a307641d3778
+      DisplayName: '&6Επιτρέπεται το PvP? &8[%state%&8]'
+    Slot: 0
+  Mob-Spawning:
+    ItemStack:
+      Material: SPAWNER
+      DisplayName: '&6Μπορούν να εμφανιστούν τα mobs? &8[%state%&8]'
+    Slot: 1
+  Creeper-Explosion:
+    ItemStack:
+      Material: GUNPOWDER
+      DisplayName: '&6Εκρήξεις από creeper? &8[%state%&8]'
+    Slot: 2
+  Wither-Damage:
+    ItemStack:
+      Material: WITHER_SKELETON_SKULL
+      DisplayName: '&6Ζημιά από wither? &8[%state%&8]'
+    Slot: 3
+  Ghast-Fireball:
+    ItemStack:
+      Material: FIRE_CHARGE
+      DisplayName: '&6Πύρινες μπάλες από ghast? &8[%state%&8]'
+    Slot: 4
+  Passthrough:
+    ItemStack:
+      Material: IRON_AXE
+      DisplayName: '&6Μπορούν οι παίκτες να κατασκευάσουν? &8[%state%&8]'
+    Slot: 5
+  Use:
+    ItemStack:
+      Material: OAK_BUTTON
+      DisplayName: '&6Μπορούν οι παίκτες να χρησιμοποιήσουν? &8[%state%&8]'
+    Slot: 6
