@@ -1,0 +1,17 @@
+Locale: zh_cn
+Title: 保护
+Size: 27
+Buttons:
+  AwkwardDesign:
+    ItemStack: BlobLib.Background
+    Slot: 18-26
+  Next-Page:
+    ItemStack: BlobLib.Next-Page
+    Slot: 23
+  Previous-Page:
+    ItemStack: BlobLib.Previous-Page
+    Slot: 22
+  ProtectionStones:
+    ItemStack:
+      Material: AIR
+    Slot: 0-17

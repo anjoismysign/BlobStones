@@ -1,0 +1,20 @@
+Locale: zh_cn
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&l输入'
+    Subtitle: '&7保护名称'
+    Actionbar: '&7如果这是一个错误，请输入 ''cancel'''
+  Rename-Timeout:
+    Type: TITLE
+    Title: '&f&l太慢了'
+    Subtitle: '&7你花了太长时间来输入名称'
+System:
+  Warmup-Failed:
+    Type: TITLE
+    Title: '&c&l取消'
+    Subtitle: '&7你在预定时间之前移动了'
+    BlobSound: System.Alert
+  Teleport-Warmup:
+    Type: ACTIONBAR
+    Message: '&7传送中... &f%time%'

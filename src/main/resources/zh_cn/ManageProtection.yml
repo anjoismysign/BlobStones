@@ -1,0 +1,57 @@
+Locale: zh_cn
+Title: 我的保护
+Size: 27
+Buttons:
+  Background:
+    ItemStack: BlobLib.Background
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      DisplayName: '&6拥有者'
+      Lore:
+      - '&7点击进行管理'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      DisplayName: '&6成员'
+      Lore:
+      - '&7点击进行管理'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      DisplayName: '&6标志'
+      Lore:
+      - '&7点击进行管理'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      DisplayName: '&6重命名'
+      Lore:
+      - '&7点击进行重命名'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      DisplayName: '&6传送'
+      Lore:
+      - '&7点击进行传送'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      DisplayName: '&6显示'
+      Lore:
+      - '&7将显示/隐藏石头'
+      - '&7状态: &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      DisplayName: '&6视图'
+      Lore:
+      - '&7点击查看保护边界'
+    Slot: 21

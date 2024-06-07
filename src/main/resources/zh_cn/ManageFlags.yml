@@ -1,0 +1,45 @@
+Locale: zh_cn
+Title: 我的保护 > 标志
+Size: 27
+Buttons:
+  AwkwardDesign:
+    ItemStack: BlobLib.Background
+    Slot: 19-26
+  Return:
+    ItemStack: BlobLib.Return
+    Slot: 18
+  PvP:
+    ItemStack:
+      Material: HEAD-http://textures.minecraft.net/texture/1765341353c029e9b655f4f57931ae6adc2c7a73c657945d945a307641d3778
+      DisplayName: '&6PvP 是否允许？&8[%state%&8]'
+    Slot: 0
+  Mob-Spawning:
+    ItemStack:
+      Material: SPAWNER
+      DisplayName: '&6是否允许怪物生成？&8[%state%&8]'
+    Slot: 1
+  Creeper-Explosion:
+    ItemStack:
+      Material: GUNPOWDER
+      DisplayName: '&6苦力怕爆炸？&8[%state%&8]'
+    Slot: 2
+  Wither-Damage:
+    ItemStack:
+      Material: WITHER_SKELETON_SKULL
+      DisplayName: '&6凋零伤害？&8[%state%&8]'
+    Slot: 3
+  Ghast-Fireball:
+    ItemStack:
+      Material: FIRE_CHARGE
+      DisplayName: '&6恶魂火球？&8[%state%&8]'
+    Slot: 4
+  Passthrough:
+    ItemStack:
+      Material: IRON_AXE
+      DisplayName: '&6玩家是否可以建造？&8[%state%&8]'
+    Slot: 5
+  Use:
+    ItemStack:
+      Material: OAK_BUTTON
+      DisplayName: '&6玩家是否可以使用？&8[%state%&8]'
+    Slot: 6
