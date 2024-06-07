@@ -14,12 +14,60 @@ public class StonesManagerDirector extends GenericManagerDirector<BlobStones> {
 
     public StonesManagerDirector(BlobStones blobPlugin) {
         super(blobPlugin);
-        registerBlobMessage("es_es/blobstones_lang", "pt_pt/blobstones_lang");
-        registerBlobInventory("ManageFlags", "es_es/ManageFlags", "pt_pt/ManageFlags");
-        registerBlobInventory("ManageMembers", "es_es/ManageMembers", "pt_pt/ManageMembers");
-        registerBlobInventory("ManageOwners", "es_es/ManageOwners", "pt_pt/ManageOwners");
-        registerBlobInventory("ManageProtection", "es_es/ManageProtection", "pt_pt/ManageProtection");
-        registerBlobInventory("WorldNavigator", "es_es/WorldNavigator", "pt_pt/WorldNavigator");
+        registerBlobMessage(
+                "de_de/blobstones_lang",
+                "el_gr/blobstones_lang",
+                "es_es/blobstones_lang",
+                "fr_fr/blobstones_lang",
+                "nl_nl/blobstones_lang",
+                "pt_pt/blobstones_lang",
+                "ru_ru/blobstones_lang",
+                "zh_cn/blobstones_lang");
+        registerBlobInventory("ManageFlags",
+                "de_de/ManageFlags",
+                "el_gr/ManageFlags",
+                "es_es/ManageFlags",
+                "fr_fr/ManageFlags",
+                "nl_nl/ManageFlags",
+                "pt_pt/ManageFlags",
+                "ru_ru/ManageFlags",
+                "zh_cn/ManageFlags");
+        registerBlobInventory("ManageMembers",
+                "de_de/ManageMembers",
+                "el_gr/ManageMembers",
+                "es_es/ManageMembers",
+                "fr_fr/ManageMembers",
+                "nl_nl/ManageMembers",
+                "pt_pt/ManageMembers",
+                "ru_ru/ManageMembers",
+                "zh_cn/ManageMembers");
+        registerBlobInventory("ManageOwners",
+                "de_de/ManageOwners",
+                "el_gr/ManageOwners",
+                "es_es/ManageOwners",
+                "fr_fr/ManageOwners",
+                "nl_nl/ManageOwners",
+                "pt_pt/ManageOwners",
+                "ru_ru/ManageOwners",
+                "zh_cn/ManageOwners");
+        registerBlobInventory("ManageProtection",
+                "de_de/ManageProtection",
+                "el_gr/ManageProtection",
+                "es_es/ManageProtection",
+                "fr_fr/ManageProtection",
+                "nl_nl/ManageProtection",
+                "pt_pt/ManageProtection",
+                "ru_ru/ManageProtection",
+                "zh_cn/ManageProtection");
+        registerBlobInventory("WorldNavigator",
+                "de_de/WorldNavigator",
+                "el_gr/WorldNavigator",
+                "es_es/WorldNavigator",
+                "fr_fr/WorldNavigator",
+                "nl_nl/WorldNavigator",
+                "pt_pt/WorldNavigator",
+                "ru_ru/WorldNavigator",
+                "zh_cn/WorldNavigator");
         addManager("Config", new ConfigManager(this));
         addManager("Engine", new ProtectionStonesEngine(this));
 
