@@ -1,0 +1,20 @@
+Locale: de_de
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&lGIB DEN'
+    Subtitle: '&7Namen des Schutzes ein'
+    Actionbar: '&7Wenn dies ein Fehler ist, schreibe ''cancel'''
+  Rename-Timeout:
+    Type: TITLE
+    Title: '&f&lZU LANGSAM'
+    Subtitle: '&7Es hat zu lange gedauert, um den Namen einzugeben'
+System:
+  Warmup-Failed:
+    Type: TITLE
+    Title: '&c&lABBRECHEN'
+    Subtitle: '&7Du hast dich zu früh bewegt'
+    BlobSound: System.Alert
+  Teleport-Warmup:
+    Type: ACTIONBAR
+    Message: '&7Teleportiert in &f%time%&7...'

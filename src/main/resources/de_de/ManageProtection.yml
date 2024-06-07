@@ -1,0 +1,57 @@
+Locale: de_de
+Title: Mein Schutz
+Size: 27
+Buttons:
+  Background:
+    ItemStack: BlobLib.Background
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      DisplayName: '&6Besitzer'
+      Lore:
+      - '&7Klicken, um zu verwalten'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      DisplayName: '&6Mitglieder'
+      Lore:
+      - '&7Klicken, um zu verwalten'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      DisplayName: '&6Flags'
+      Lore:
+      - '&7Klicken, um zu verwalten'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      DisplayName: '&6Umbenennen'
+      Lore:
+      - '&7Klicken, um umzubenennen'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      DisplayName: '&6Teleportieren'
+      Lore:
+      - '&7Klicken, um zu gehen'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      DisplayName: '&6Anzeigen'
+      Lore:
+      - '&7Zeigt/Versteckt den Stein'
+      - '&7Status: &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      DisplayName: '&6Ansicht'
+      Lore:
+      - '&7Klicken, um die Schutzbereiche anzuzeigen'
+    Slot: 21

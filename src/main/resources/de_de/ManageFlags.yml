@@ -1,0 +1,45 @@
+Locale: de_de
+Title: Mein Schutz > Flags
+Size: 27
+Buttons:
+  AwkwardDesign:
+    ItemStack: BlobLib.Background
+    Slot: 19-26
+  Return:
+    ItemStack: BlobLib.Return
+    Slot: 18
+  PvP:
+    ItemStack:
+      Material: HEAD-http://textures.minecraft.net/texture/1765341353c029e9b655f4f57931ae6adc2c7a73c657945d945a307641d3778
+      DisplayName: '&6Ist PvP erlaubt? &8[%state%&8]'
+    Slot: 0
+  Mob-Spawning:
+    ItemStack:
+      Material: SPAWNER
+      DisplayName: '&6Können Mobs spawnen? &8[%state%&8]'
+    Slot: 1
+  Creeper-Explosion:
+    ItemStack:
+      Material: GUNPOWDER
+      DisplayName: '&6Creeper-Explosionen? &8[%state%&8]'
+    Slot: 2
+  Wither-Damage:
+    ItemStack:
+      Material: WITHER_SKELETON_SKULL
+      DisplayName: '&6Wither-Schaden? &8[%state%&8]'
+    Slot: 3
+  Ghast-Fireball:
+    ItemStack:
+      Material: FIRE_CHARGE
+      DisplayName: '&6Ghast-Feuerkugeln? &8[%state%&8]'
+    Slot: 4
+  Passthrough:
+    ItemStack:
+      Material: IRON_AXE
+      DisplayName: '&6Können Spieler bauen? &8[%state%&8]'
+    Slot: 5
+  Use:
+    ItemStack:
+      Material: OAK_BUTTON
+      DisplayName: '&6Können Spieler verwenden? &8[%state%&8]'
+    Slot: 6
