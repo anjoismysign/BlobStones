@@ -1,0 +1,20 @@
+Locale: nl_nl
+BlobStone:
+  Rename:
+    Type: ACTIONBAR_TITLE
+    Title: '&f&lSCHRIJF DE'
+    Subtitle: '&7Naam van de bescherming'
+    Actionbar: '&7Als dit een fout is, schrijf dan ''cancel'''
+  Rename-Timeout:
+    Type: TITLE
+    Title: '&f&lTE LANGZAAM'
+    Subtitle: '&7Je hebt te langzaam geschreven'
+System:
+  Warmup-Failed:
+    Type: TITLE
+    Title: '&c&lGEANNULEERD'
+    Subtitle: '&7Je bewoog te vroeg'
+    BlobSound: System.Alert
+  Teleport-Warmup:
+    Type: ACTIONBAR
+    Message: '&7Teleporteren in &f%time%&7...'

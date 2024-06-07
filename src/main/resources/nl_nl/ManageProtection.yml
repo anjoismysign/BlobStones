@@ -1,0 +1,57 @@
+Locale: nl_nl
+Title: Mijn Bescherming
+Size: 27
+Buttons:
+  Background:
+    ItemStack: BlobLib.Background
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      DisplayName: '&6Eigenaars'
+      Lore:
+      - '&7Klik om te beheren'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      DisplayName: '&6Leden'
+      Lore:
+      - '&7Klik om te beheren'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      DisplayName: '&6Vlaggen'
+      Lore:
+      - '&7Klik om te beheren'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      DisplayName: '&6Hernoemen'
+      Lore:
+      - '&7Klik om te hernoemen'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      DisplayName: '&6Teleporteren'
+      Lore:
+      - '&7Klik om te gaan'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      DisplayName: '&6Weergeven'
+      Lore:
+      - '&7Laat/verberg de steen'
+      - '&7Status: &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      DisplayName: '&6Weergave'
+      Lore:
+      - '&7Klik om de grenzen van de bescherming te bekijken'
+    Slot: 21
