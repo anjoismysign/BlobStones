@@ -1,0 +1,57 @@
+Locale: fr_fr
+Title: Ma Protection
+Size: 27
+Buttons:
+  Background:
+    ItemStack: BlobLib.Background
+    Slot: 0-26
+  Owners:
+    ItemStack:
+      Material: ENDER_CHEST
+      DisplayName: '&6Propriétaires'
+      Lore:
+      - '&7Cliquez pour gérer'
+    Slot: 11
+  Members:
+    ItemStack:
+      Material: CHEST
+      DisplayName: '&6Membres'
+      Lore:
+      - '&7Cliquez pour gérer'
+    Slot: 12
+  Flags:
+    ItemStack:
+      Material: COMMAND_BLOCK
+      DisplayName: '&6Drapeaux'
+      Lore:
+      - '&7Cliquez pour gérer'
+    Slot: 14
+  Rename:
+    ItemStack:
+      Material: NAME_TAG
+      DisplayName: '&6Renommer'
+      Lore:
+      - '&7Cliquez pour renommer'
+    Slot: 15
+  Teleport:
+    ItemStack:
+      Material: ENDER_PEARL
+      DisplayName: '&6Téléporter'
+      Lore:
+      - '&7Cliquez pour aller'
+    Slot: 22
+  Show:
+    ItemStack:
+      Material: GOLDEN_CARROT
+      DisplayName: '&6Montrer'
+      Lore:
+      - '&7Va montrer/cacher la pierre'
+      - '&7État : &r%show%'
+    Slot: 13
+  View:
+    ItemStack:
+      Material: ENDER_EYE
+      DisplayName: '&6Vue'
+      Lore:
+      - '&7Cliquez pour voir les limites de la protection'
+    Slot: 21
