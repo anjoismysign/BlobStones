@@ -1,19 +1,24 @@
-package us.mytheria.blobstones.engine;
+package io.github.anjoismysign.blobstones.engine;
 
+import io.github.anjoismysign.bloblib.api.BlobLibInventoryAPI;
+import io.github.anjoismysign.bloblib.entities.inventory.BlobInventory;
+import io.github.anjoismysign.bloblib.entities.inventory.BlobInventoryTracker;
+import io.github.anjoismysign.bloblib.entities.inventory.InventoryButton;
+import io.github.anjoismysign.blobstones.director.ConfigManager;
+import io.github.anjoismysign.blobstones.director.StonesManager;
+import io.github.anjoismysign.blobstones.director.StonesManagerDirector;
+import io.github.anjoismysign.blobstones.entities.InventoryType;
+import io.github.anjoismysign.blobstones.entities.MovementWarmup;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
-import us.mytheria.bloblib.api.BlobLibInventoryAPI;
-import us.mytheria.bloblib.entities.inventory.BlobInventory;
-import us.mytheria.bloblib.entities.inventory.BlobInventoryTracker;
-import us.mytheria.bloblib.entities.inventory.InventoryButton;
-import us.mytheria.blobstones.director.ConfigManager;
-import us.mytheria.blobstones.director.StonesManager;
-import us.mytheria.blobstones.director.StonesManagerDirector;
-import us.mytheria.blobstones.entities.InventoryType;
-import us.mytheria.blobstones.entities.MovementWarmup;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 public class StonesEngine extends StonesManager implements Listener {
     private final ConfigManager configManager;

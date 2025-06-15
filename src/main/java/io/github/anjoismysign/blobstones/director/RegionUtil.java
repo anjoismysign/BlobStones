@@ -1,4 +1,4 @@
-package us.mytheria.blobstones.director;
+package io.github.anjoismysign.blobstones.director;
 
 import dev.espi.protectionstones.PSGroupRegion;
 import dev.espi.protectionstones.PSMergedRegion;

@@ -1,7 +1,7 @@
-package us.mytheria.blobstones.director;
+package io.github.anjoismysign.blobstones.director;
 
-import us.mytheria.bloblib.entities.GenericManager;
-import us.mytheria.blobstones.BlobStones;
+import io.github.anjoismysign.bloblib.entities.GenericManager;
+import io.github.anjoismysign.blobstones.BlobStones;
 
 public class StonesManager extends GenericManager<BlobStones, StonesManagerDirector> {
     public StonesManager(StonesManagerDirector managerDirector) {

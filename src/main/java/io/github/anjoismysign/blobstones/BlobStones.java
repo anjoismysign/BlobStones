@@ -1,11 +1,11 @@
-package us.mytheria.blobstones;
+package io.github.anjoismysign.blobstones;
 
+import io.github.anjoismysign.bloblib.entities.PluginUpdater;
+import io.github.anjoismysign.bloblib.entities.proxy.BlobProxifier;
+import io.github.anjoismysign.bloblib.managers.BlobPlugin;
+import io.github.anjoismysign.bloblib.managers.IManagerDirector;
+import io.github.anjoismysign.blobstones.director.StonesManagerDirector;
 import org.jetbrains.annotations.NotNull;
-import us.mytheria.bloblib.entities.PluginUpdater;
-import us.mytheria.bloblib.entities.proxy.BlobProxifier;
-import us.mytheria.bloblib.managers.BlobPlugin;
-import us.mytheria.bloblib.managers.IManagerDirector;
-import us.mytheria.blobstones.director.StonesManagerDirector;
 
 public final class BlobStones extends BlobPlugin {
     private StonesManagerDirector director;

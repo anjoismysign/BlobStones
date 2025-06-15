@@ -1,4 +1,4 @@
-package us.mytheria.blobstones.entities;
+package io.github.anjoismysign.blobstones.entities;
 
 public enum InventoryType {
     MANAGE_OWNERS,

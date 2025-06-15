@@ -1,14 +1,14 @@
-package us.mytheria.blobstones.director;
+package io.github.anjoismysign.blobstones.director;
 
+import io.github.anjoismysign.bloblib.entities.GenericManagerDirector;
+import io.github.anjoismysign.blobstones.BlobStones;
+import io.github.anjoismysign.blobstones.engine.ProtectionStonesEngine;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import us.mytheria.bloblib.entities.GenericManagerDirector;
-import us.mytheria.blobstones.BlobStones;
-import us.mytheria.blobstones.engine.ProtectionStonesEngine;
 
 public class StonesManagerDirector extends GenericManagerDirector<BlobStones> {
 

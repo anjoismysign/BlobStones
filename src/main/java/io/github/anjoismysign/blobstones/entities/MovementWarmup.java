@@ -1,6 +1,13 @@
-package us.mytheria.blobstones.entities;
+package io.github.anjoismysign.blobstones.entities;
 
-import me.anjoismysign.anjo.entities.Uber;
+import io.github.anjoismysign.anjo.entities.Uber;
+import io.github.anjoismysign.bloblib.api.BlobLibMessageAPI;
+import io.github.anjoismysign.bloblib.api.BlobLibSoundAPI;
+import io.github.anjoismysign.bloblib.entities.MinecraftTimeUnit;
+import io.github.anjoismysign.bloblib.entities.message.BlobMessage;
+import io.github.anjoismysign.blobstones.BlobStones;
+import io.github.anjoismysign.blobstones.director.ConfigManager;
+import io.github.anjoismysign.blobstones.engine.StonesEngine;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -11,13 +18,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockVector;
-import us.mytheria.bloblib.api.BlobLibMessageAPI;
-import us.mytheria.bloblib.api.BlobLibSoundAPI;
-import us.mytheria.bloblib.entities.MinecraftTimeUnit;
-import us.mytheria.bloblib.entities.message.BlobMessage;
-import us.mytheria.blobstones.BlobStones;
-import us.mytheria.blobstones.director.ConfigManager;
-import us.mytheria.blobstones.engine.StonesEngine;
 
 import java.util.HashSet;
 import java.util.UUID;

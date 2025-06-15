@@ -1,8 +1,8 @@
-package us.mytheria.blobstones.director;
+package io.github.anjoismysign.blobstones.director;
 
+import io.github.anjoismysign.bloblib.utilities.TextColor;
+import io.github.anjoismysign.blobstones.BlobStones;
 import org.bukkit.configuration.file.FileConfiguration;
-import us.mytheria.bloblib.utilities.TextColor;
-import us.mytheria.blobstones.BlobStones;
 
 import java.util.HashMap;
 import java.util.Map;
