@@ -291,7 +291,10 @@ public class ProtectionStonesEngine extends StonesEngine {
                     ItemStackBuilder builder = ItemStackBuilder.build(current);
                     builder.displayName(displayName);
                     return builder.build();
-                }, null);
+                },
+                null,
+                null,
+                null);
     }
 
     /**
@@ -364,7 +367,10 @@ public class ProtectionStonesEngine extends StonesEngine {
                 uuid -> {
                     region.removeMember(uuid);
                     openManageMembers(player);
-                }, this::openManageProtection);
+                },
+                this::openManageProtection,
+                null,
+                null);
     }
 
     /**
@@ -417,7 +423,10 @@ public class ProtectionStonesEngine extends StonesEngine {
                         return;
                     }
                     openManageOwners(player);
-                }, this::openManageProtection);
+                },
+                this::openManageProtection,
+                null,
+                null);
     }
 
     /**
