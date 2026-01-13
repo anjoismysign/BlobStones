@@ -12,7 +12,7 @@ import io.github.anjoismysign.bloblib.entities.inventory.BlobInventory;
 import io.github.anjoismysign.bloblib.entities.inventory.BlobInventoryTracker;
 import io.github.anjoismysign.bloblib.entities.inventory.InventoryButton;
 import io.github.anjoismysign.bloblib.entities.inventory.InventoryDataRegistry;
-import io.github.anjoismysign.bloblib.itemstack.ItemStackBuilder;
+import io.github.anjoismysign.bloblib.middleman.itemstack.ItemStackBuilder;
 import io.github.anjoismysign.blobstones.director.ConfigManager;
 import io.github.anjoismysign.blobstones.director.RegionUtil;
 import io.github.anjoismysign.blobstones.director.StonesManagerDirector;
